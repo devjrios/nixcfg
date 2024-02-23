@@ -145,14 +145,14 @@
     fontconfig = {
       localConf = ''
         <alias>
-	  <family>Glorious Monospaced Shell</family>
-	  <prefer>
-	    <family>Comic Code</family>
-	    <family>Comic Code Ligatures</family>
-	    <family>Symbols Nerd Font Mono</family>
-	    <family>Noto Color Emoji</family>
-	  </prefer>
-	</alias>
+          <family>Glorious Monospaced Shell</family>
+          <prefer>
+            <family>Comic Code</family>
+            <family>Comic Code Ligatures</family>
+            <family>Symbols Nerd Font Mono</family>
+            <family>Noto Color Emoji</family>
+          </prefer>
+        </alias>
       '';
     };
   };
