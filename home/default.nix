@@ -1,8 +1,10 @@
-{ pkgs, nixvim, ... }:
+{ pkgs, ... }:
 let
   additionalJDKs = [ pkgs.zulu17 pkgs.zulu8 ];
 in
 {
+  imports = [ ./modules/neovim ];
+
   fonts.fontconfig.enable = true;
 
   home.sessionPath = [ "$HOME/.jdks" ];

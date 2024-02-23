@@ -23,7 +23,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.jrios.imports = [ nixvim.homeManagerModules.nixvim ./home.nix ];
+            home-manager.users.jrios.imports = [ nixvim.homeManagerModules.nixvim ./home ];
             # home-manager.extraSpecialArgs = {};
           }
         ];
