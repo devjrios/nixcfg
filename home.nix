@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, nixvim, ... }:
 let
   additionalJDKs = [ pkgs.zulu17 pkgs.zulu8 ];
 in {
@@ -87,11 +87,6 @@ in {
 
     programs.mr = {
       enable = true;
-      settings = {
-        ".config/nvim" = {
-          checkout = "git clone https://github.com/devjrios/neoconfig.git $HOME/.config/nvim";
-        };
-      };
     };
 
     programs.zsh = {
