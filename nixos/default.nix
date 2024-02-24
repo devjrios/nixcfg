@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -116,9 +116,7 @@
     quarto
     openconnect
     insomnia
-    delta
     htop
-    lazygit
     fd
     ripgrep
     pandoc
@@ -129,8 +127,16 @@
     unzip
     libreoffice-qt
     vlc
-    inputs.nvim.packages.${system}.default
   ];
+
+  environment.sessionVariables = rec {
+    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME   = "$HOME/.local/share";
+    XDG_STATE_HOME  = "$HOME/.local/state";
+    XDG_BIN_HOME    = "$HOME/.local/bin";
+    PATH            = [ "${XDG_BIN_HOME}" ];
+  };
 
   fonts = {
     packages = with pkgs; [
@@ -160,6 +166,7 @@
   };
 
   programs.zsh.enable = true;
+  programs.nix-ld.enable = true;
 
   system.stateVersion = "23.11";
 

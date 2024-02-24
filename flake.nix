@@ -5,11 +5,9 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    nvim.url = "github:devjrios/neonix";
-    # nvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, nvim, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -18,7 +16,7 @@
       nixosConfigurations.default = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./configuration.nix
+          ./nixos
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

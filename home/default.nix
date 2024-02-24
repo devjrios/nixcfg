@@ -13,9 +13,13 @@ in
       value = { source = jdk; };
     })
     additionalJDKs));
+  
+  # Testing ...
+  xdg.portal.xdgOpenUsePortal = true;
 
   programs.git = {
     enable = true;
+    delta.enable = true;
     extraConfig = {
       core = {
         autocrlf = "input";
@@ -89,8 +93,22 @@ in
     };
   };
 
+  programs.lazygit.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+  };
+
   programs.mr = {
     enable = true;
+    settings = {
+      ".config/nvim" = {
+        checkout = "rm -rf $HOME/.config/nvim;rm -rf $HOME/.local/share/nvim;rm -rf $HOME/.local/state/nvim;rm -rf $HOME/.cache/nvim;git clone https://github.com/devjrios/neoconfig.git $HOME/.config/nvim";
+      };
+    };
   };
 
   programs.zsh = {
@@ -127,6 +145,7 @@ in
         fi
         ''${EDITOR:-nvim} flake.nix
       }
+      export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
       # pnpm
       export PNPM_HOME="$HOME/.local/share/pnpm"
       case ":$PATH:" in
