@@ -173,22 +173,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1708702655,
-        "narHash": "sha256-qxT5jSLhelfLhQ07+AUxSTm1VnVH+hQxDkQSZ/m/Smo=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c5101e457206dd437330d283d6626944e28794b3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-23.11",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixvim": {
       "inputs": {
         "beautysh": "beautysh",
@@ -217,23 +201,23 @@
     "nvim": {
       "inputs": {
         "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "nixvim": "nixvim"
       },
       "locked": {
-        "dir": "home/nvim",
-        "lastModified": 1708793017,
-        "narHash": "sha256-9QJm39/5urIPOx8MYfRyFKmtpUCBjHkFwuWX4SmbJuQ=",
-        "ref": "refs/heads/main",
-        "rev": "58877cfa1ed0abd81ac4c319e33ee7c6b9ce1fdb",
-        "revCount": 9,
-        "type": "git",
-        "url": "file:.?dir=home/nvim"
+        "lastModified": 1708795389,
+        "narHash": "sha256-okcxVZ4mbkR9XgprjRqVKh75JiGLmHQmSdS7Ow9acw0=",
+        "owner": "devjrios",
+        "repo": "neonix",
+        "rev": "a206d2d8412e806345dcc4c1424874463c848b46",
+        "type": "github"
       },
       "original": {
-        "dir": "home/nvim",
-        "type": "git",
-        "url": "file:.?dir=home/nvim"
+        "owner": "devjrios",
+        "repo": "neonix",
+        "type": "github"
       }
     },
     "poetry2nix": {
