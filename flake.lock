@@ -207,11 +207,11 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1708796876,
-        "narHash": "sha256-hadMUvyycS/AAJUePN+Z1M6RlrJE5f75XFJGSP8u1xs=",
+        "lastModified": 1708797301,
+        "narHash": "sha256-2bHEg7EDFWi37Sf3JI1q5evhzm/z8xhLAsVlS2kDLu8=",
         "owner": "devjrios",
         "repo": "neonix",
-        "rev": "a8ac59b8c48993aebe7bbf05a696c97c35aac83f",
+        "rev": "f794c76e8378bf2cab28eef95d3a2812c97d1a7f",
         "type": "github"
       },
       "original": {
