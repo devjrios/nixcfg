@@ -111,7 +111,6 @@
     vscode
     nodejs_18
     corepack_18
-    conda
     go
     texliveFull
     quarto
@@ -128,6 +127,8 @@
     editorconfig-core-c
     xclip
     unzip
+    libreoffice-qt
+    vlc
   ];
 
   fonts = {

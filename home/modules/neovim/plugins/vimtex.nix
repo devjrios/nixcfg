@@ -2,6 +2,8 @@
   programs.nixvim = {
     plugins.vimtex = {
       enable = true;
+      installTexLive = false;
+      viewMethod = "mupdf";
     };
 
     keymaps = [
