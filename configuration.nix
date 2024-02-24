@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -129,6 +129,7 @@
     unzip
     libreoffice-qt
     vlc
+    inputs.nvim.packages.${system}.default
   ];
 
   fonts = {
