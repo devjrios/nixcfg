@@ -105,28 +105,30 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs; [
-    wget
-    google-chrome
-    vscode
-    nodejs_18
-    corepack_18
-    go
-    texliveFull
-    quarto
-    openconnect
-    insomnia
-    htop
-    fd
-    ripgrep
-    pandoc
-    librsvg
-    moreutils
-    editorconfig-core-c
-    xclip
-    unzip
-    libreoffice-qt
-    vlc
+  environment.systemPackages = [
+    pkgs.wget
+    pkgs.google-chrome
+    pkgs.vscode
+    pkgs.nodejs_18
+    pkgs.corepack_18
+    pkgs.go
+    pkgs.texliveFull
+    pkgs.quarto
+    pkgs.openconnect
+    pkgs.insomnia
+    pkgs.htop
+    pkgs.fd
+    pkgs.ripgrep
+    pkgs.pandoc
+    pkgs.librsvg
+    pkgs.moreutils
+    pkgs.editorconfig-core-c
+    pkgs.xclip
+    pkgs.unzip
+    pkgs.libreoffice-qt
+    pkgs.vlc
+    (pkgs.writeShellScriptBin "make" ''nix-shell --impure -p stdenv --command "$@"'')
+    (pkgs.writeShellScriptBin "gcc" ''nix-shell --impure -p stdenv --command "$@"'')
   ];
 
   environment.sessionVariables = rec {

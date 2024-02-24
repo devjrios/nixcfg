@@ -13,9 +13,9 @@ in
       value = { source = jdk; };
     })
     additionalJDKs));
-  
-  # Testing ...
-  xdg.portal.xdgOpenUsePortal = true;
+
+  # Only available in unstable branch ...
+  # xdg.portal.xdgOpenUsePortal = true;
 
   programs.git = {
     enable = true;
@@ -31,9 +31,6 @@ in
         log = "delta";
         reflog = "delta";
         show = "delta";
-      };
-      interactive = {
-        diffFilter = "delta --color-only --features=interactive";
       };
       delta = {
         features = "side-by-side line-numbers decorations";
@@ -145,7 +142,7 @@ in
         fi
         ''${EDITOR:-nvim} flake.nix
       }
-      export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
+      export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "''${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
       # pnpm
       export PNPM_HOME="$HOME/.local/share/pnpm"
       case ":$PATH:" in
