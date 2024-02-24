@@ -91,6 +91,7 @@
                 lazyPath = pkgs.linkFarm "lazy-plugins" (builtins.map mkEntryFromDrv plugins);
               in
               ''
+                package.loaded["lazyvim.config.options"] = true
                 require("lazy").setup({
                   defaults = {
                     lazy = true,
@@ -103,7 +104,7 @@
                     fallback = true,
                   },
                   spec = {
-                    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+                    { "LazyVim/LazyVim", import = "lazyvim.plugins", opts = { defaults = { autocmds = false } } },
                     -- The following configs are needed for fixing lazyvim on nix
                     -- force enable telescope-fzf-native.nvim
                     { "nvim-telescope/telescope-fzf-native.nvim", enabled = true },
