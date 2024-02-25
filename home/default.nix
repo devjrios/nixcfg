@@ -110,7 +110,7 @@ in
 
   programs.zsh = {
     enable = true;
-    shellAliases = { lat = "ls -lat"; };
+    shellAliases = { lat = "ls -lat"; lg = "lazygit"; };
     oh-my-zsh = {
       enable = true;
       plugins = [ "git" "colored-man-pages" "history" "jsontools" "copypath" ];
