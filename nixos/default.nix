@@ -111,6 +111,13 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  let
+    gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+      gke-gcloud-auth-plugin
+      kubectl
+      cloud_sql_proxy
+    ]);
+  in
   environment.systemPackages = [
     pkgs.wget
     pkgs.google-chrome
@@ -133,6 +140,7 @@
     pkgs.unzip
     pkgs.libreoffice-qt
     pkgs.vlc
+    gdk
     (pkgs.writeShellScriptBin "make" ''
     args="$@"
     nix-shell --impure -p stdenv --command "make $args"
