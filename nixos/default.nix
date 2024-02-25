@@ -124,7 +124,6 @@
     pkgs.vscode
     pkgs.nodejs_18
     pkgs.corepack_18
-    pkgs.go
     pkgs.texliveFull
     pkgs.quarto
     pkgs.openconnect
