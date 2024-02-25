@@ -1,6 +1,11 @@
 { pkgs, ... }:
 let
   additionalJDKs = [ pkgs.zulu17 pkgs.zulu8 ];
+  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+    gke-gcloud-auth-plugin
+    kubectl
+    cloud_sql_proxy
+  ]);
 in
 {
 
@@ -16,6 +21,8 @@ in
 
   # Only available in unstable branch ...
   # xdg.portal.xdgOpenUsePortal = true;
+
+  home.packages = [ gdk ];
 
   programs.git = {
     enable = true;
