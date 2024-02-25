@@ -103,7 +103,7 @@ in
     enable = true;
     settings = {
       ".config/nvim" = {
-        checkout = "rm -rf $HOME/.config/nvim;rm -rf $HOME/.local/share/nvim;rm -rf $HOME/.local/state/nvim;rm -rf $HOME/.cache/nvim;git clone https://github.com/devjrios/neoconfig.git $HOME/.config/nvim";
+        checkout = "rm -rf $HOME/.config/nvim;rm -rf $HOME/.local/share/nvim;rm -rf $HOME/.local/state/nvim;rm -rf $HOME/.cache/nvim;git clone -b nixos https://github.com/devjrios/neoconfig.git $HOME/.config/nvim";
       };
     };
   };
