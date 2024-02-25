@@ -127,8 +127,12 @@
     pkgs.unzip
     pkgs.libreoffice-qt
     pkgs.vlc
-    (pkgs.writeShellScriptBin "make" ''nix-shell --impure -p stdenv --command "make $@"'')
-    (pkgs.writeShellScriptBin "gcc" ''nix-shell --impure -p stdenv --command "gcc $@"'')
+    (pkgs.writeShellScriptBin "make" ''args="$@"
+    nix-shell --impure -p stdenv --command "make $args"
+    '')
+    (pkgs.writeShellScriptBin "gcc" ''args="$@"
+    nix-shell --impure -p stdenv --command "gcc $args"
+    '')
   ];
 
   environment.sessionVariables = rec {
