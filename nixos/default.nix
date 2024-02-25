@@ -56,7 +56,7 @@
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.displayManager.sessionCommands = ''
-    sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap <<'EOF'
+    sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap - <<'EOF'
     clear lock
     keycode 66 = Home NoSymbol Home
     EOF
