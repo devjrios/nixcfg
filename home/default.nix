@@ -161,6 +161,9 @@ in
           *) export PATH="$PNPM_HOME:$PATH" ;;
         esac
       fi
+      if [[ -z "$SSH_ASKPASS_REQUIRE" ]]; then
+        export SSH_ASKPASS_REQUIRE="prefer"
+      fi
     '';
   };
 
