@@ -22,7 +22,7 @@ in
   # Only available in unstable branch ...
   # xdg.portal.xdgOpenUsePortal = true;
 
-  home.packages = [ gdk ];
+  home.packages = [ gdk pkgs.jetbrains.datagrip ];
 
   programs.git = {
     enable = true;
@@ -237,7 +237,6 @@ in
 
   programs.alacritty = {
     enable = true;
-    package = pkgs.alacritty;
     settings = {
       font = {
         bold = {
