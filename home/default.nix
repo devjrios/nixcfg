@@ -22,6 +22,19 @@ in
   # Only available in unstable branch ...
   # xdg.portal.xdgOpenUsePortal = true;
 
+  #nixpkgs.overlays = [
+  #  (final: prev: {
+  #    maven-jdk8 = (prev.maven.overrideAttrs (previousAttrs: {
+  #      name = "maven-jdk8";
+  #      version = "3.6.3";
+  #      src = fetchurl {
+  #        url = "mirror://apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz";
+  #        sha256 = "1i9qlj3vy4j1yyf22nwisd0pg88n9qzp9ymfhwqabadka7br3b96";
+  #      };
+  #    })).override { jdk = final.zulu8; };
+  #  })
+  #];
+
   home.packages = [ gdk pkgs.jetbrains.datagrip ];
 
   programs.git = {
