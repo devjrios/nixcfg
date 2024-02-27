@@ -116,6 +116,9 @@
   services.postgresql = {
     enable = true;
     package = pkgs.postgresql_15;
+    settings = {
+      max_prepared_transactions = 3;
+    };
     # ensureDatabases = [ "sm" ];
     enableTCPIP = true;
     authentication = pkgs.lib.mkOverride 10 ''
