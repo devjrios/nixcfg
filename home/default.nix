@@ -153,6 +153,7 @@ in
           ''${EDITOR:-nvim} default.nix
         fi
       }
+
       flakify() {
         if [ ! -e flake.nix ]; then
           nix flake new -t github:nix-community/nix-direnv .
@@ -161,6 +162,28 @@ in
           direnv allow
         fi
         ''${EDITOR:-nvim} flake.nix
+      }
+
+      compile_java() {
+        skipTests="$1"
+        profile="$2"
+        if [ -z "$profile" ]; then
+          profile="all"
+        fi
+        if [ -z "$skipTests" ]; then
+          skipTests="true"
+        fi
+        mvn -Dmaven.test.skip=$skipTests -T 1.0C clean install -P$profile
+      }
+
+      run_java() {
+        core_name=$(find -L $PWD -type d -regex ".+-core$" | grep -P -v "(trx|bpm)")
+        echo "Here is my core name: $core_name"
+        jar_file=$(find -L "$core_name/target" -regex ".+SNAPSHOT.jar$")
+        [ -z "$jar_file" ] && jar_file=$(find -L "$core_name/target" -regex ".+SMLB.jar$")
+        echo "Here is my jar file: $jar_file"
+        profiles="''${1:-local,token,nomultitenant}"
+        java -Dspring.profiles.active="$profiles" -Dspring.cloud.discovery.enabled=false -Deureka.client.enabled=false -Dribbon.eureka.enabled=false -Deureka.client.registerWithEureka=false -Deureka.client.fetchRegistry=false -Dspring.cloud.service-registry.auto-registration.enabled=false -Xmx512M -XX:MaxMetaspaceSize=256M -jar $jar_file
       }
     '';
     envExtra = ''

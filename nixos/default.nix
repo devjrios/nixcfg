@@ -7,6 +7,10 @@
     ];
 
   nix.settings = {
+    # for nix-direnv
+    # keep-outputs = true;
+    # keep-derivations = true;
+
     extra-experimental-features = "nix-command flakes";
     accept-flake-config = true;
     auto-optimise-store = true;
@@ -121,6 +125,10 @@
       host  all      sm          ::1/128        scram-sha-256
       local all      sm                         scram-sha-256
 
+      host  all      test        127.0.0.1/32   scram-sha-256
+      host  all      test        ::1/128        scram-sha-256
+      local all      test                       scram-sha-256
+
       local all      postgres                   trust
       local all      root                       trust
     '';
@@ -198,6 +206,7 @@
   };
 
   programs.zsh.enable = true;
+  programs.partition-manager.enable = true;
   programs.nix-ld.enable = true;
 
   system.stateVersion = "23.11";
