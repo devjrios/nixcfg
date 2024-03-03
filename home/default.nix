@@ -30,6 +30,8 @@ in
     pkgs.spotify
   ];
 
+  services.mpris-proxy.enable = true;
+
   programs.git = {
     enable = true;
     delta.enable = true;

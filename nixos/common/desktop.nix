@@ -1,13 +1,36 @@
 { pkgs, ... }:
 {
-  sound.enable = true;
+  sound.enable = false;
   hardware.pulseaudio.enable = false;
+  hardware.bluetooth.enable = true;
+  hardware.bluetooth.powerOnBoot = true;
+  hardware.bluetooth.settings = {
+
+    General = {
+      Experimental = true;
+      Enable = "Source,Sink,Media,Socket";
+    };
+
+  };
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
+    wireplumber.enable = true;
     # jack.enable = true;
+  };
+
+  environment.etc = {
+    "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''
+      bluez_monitor.properties = {
+        ["bluez5.enable-sbc-xq"] = true,
+        ["bluez5.enable-msbc"] = true,
+        ["bluez5.enable-hw-volume"] = true,
+        ["bluez5.headset-roles"] = "[ hsp_hs hsp_ag hfp_hf hfp_ag ]"
+      }
+    '';
   };
 
   services.xserver.enable = true;
@@ -55,12 +78,12 @@
   };
 
   environment.sessionVariables = rec {
-    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME   = "$HOME/.local/share";
-    XDG_STATE_HOME  = "$HOME/.local/state";
-    XDG_BIN_HOME    = "$HOME/.local/bin";
-    PATH            = [ "${XDG_BIN_HOME}" ];
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
+    XDG_BIN_HOME = "$HOME/.local/bin";
+    PATH = [ "${XDG_BIN_HOME}" ];
   };
 
 }
