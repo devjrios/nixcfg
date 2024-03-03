@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -23,13 +25,7 @@
     xkbVariant = "";
   };
 
-
   services.printing.enable = true;
-
-
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-
 
   fonts = {
     packages = with pkgs; [
