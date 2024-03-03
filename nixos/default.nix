@@ -41,13 +41,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
-
-  # boot.loader.systemd-boot.enable = true;
-  # boot.loader.systemd-boot.configurationLimit = 2;
-  # boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 2;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -69,9 +65,6 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-  # Comment this out when switching to bare metal
-  virtualisation.vmware.guest.enable = true;
 
   virtualisation.docker.rootless = {
     enable = true;
