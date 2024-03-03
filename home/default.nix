@@ -27,6 +27,7 @@ in
     pkgs.jetbrains.datagrip
     pkgs.insomnia
     pkgs.keepassxc
+    pkgs.spotify
   ];
 
   programs.git = {
