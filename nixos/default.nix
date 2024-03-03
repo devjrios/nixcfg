@@ -42,6 +42,8 @@
     pkgs.ripgrep
     pkgs.editorconfig-core-c
     pkgs.htop
+    # Enabled for system rebuild, regardless of home-manager
+    pkgs.git
 
     # X11 utils
     pkgs.xclip
