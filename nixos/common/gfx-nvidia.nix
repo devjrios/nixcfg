@@ -11,22 +11,18 @@ in
 {
   config = {
 
-    environment.sessionVariables = {
-      LIBVA_DRIVER_NAME = "nvidia";
-      # MOZ_DISABLE_RDD_SANDBOX = "1";
-      # EGL_PLATFORM = "wayland";
-    };
-
     hardware.opengl.enable = true;
+    hardware.opengl.driSupport = true;
 
     services.xserver.videoDrivers = [ "nvidia" ];
 
     hardware.nvidia = {
       package = nvidiaPkg;
-      open = true;
+      open = false;
       modesetting.enable = true;
       nvidiaSettings = false;
-      powerManagement.enable = false;
+      powerManagement.enable = true;
+      powerManagement.finegrained = true;
 
       prime = {
         nvidiaBusId = "PCI:1:0:0";
