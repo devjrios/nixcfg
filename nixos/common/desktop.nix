@@ -5,12 +5,10 @@
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   hardware.bluetooth.settings = {
-
     General = {
       Experimental = true;
       Enable = "Source,Sink,Media,Socket";
     };
-
   };
 
   services.pipewire = {
@@ -21,6 +19,8 @@
     wireplumber.enable = true;
     # jack.enable = true;
   };
+  nixpkgs.config.pulseaudio = true;
+
 
   environment.etc = {
     "wireplumber/bluetooth.lua.d/51-bluez-config.lua".text = ''

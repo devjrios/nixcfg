@@ -18,7 +18,7 @@
   networking.networkmanager.enable = true;
 
   programs.zsh.enable = true;
-  programs.partition-manager.enable = true;
+  services.fwupd.enable = true;
   programs.nix-ld.enable = true;
 
   system.stateVersion = "23.11";
