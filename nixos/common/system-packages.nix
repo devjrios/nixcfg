@@ -21,6 +21,7 @@
     pkgs.ripgrep
     pkgs.editorconfig-core-c
     pkgs.htop
+    pkgs.dos2unix
 
     # X11 utils
     pkgs.xclip
