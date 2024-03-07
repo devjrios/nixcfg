@@ -182,17 +182,17 @@ in
       }
 
       init_db() {
-        script_dos="$(/usr/bin/env find -L "${PWD}" -maxdepth 3 -type f -name 'init-db.bat')"
-        script_sql="$(/usr/bin/env find -L "${PWD}" -maxdepth 4 -type f -name 'init-db.sql')"
+        script_dos="$(/usr/bin/env find -L "''${PWD}" -maxdepth 3 -type f -name 'init-db.bat')"
+        script_sql="$(/usr/bin/env find -L "''${PWD}" -maxdepth 4 -type f -name 'init-db.sql')"
 
-        /usr/bin/env dos2unix "$script_dos"
-        /usr/bin/env dos2unix "$script_sql"
+        /usr/bin/env dos2unix "''${script_dos}"
+        /usr/bin/env dos2unix "''${script_sql}"
 
-        db_name="$(/usr/bin/env grep -Po '(?<=\-U sm )\w+$' "${script_dos}" | /usr/bin/env xargs)"
+        db_name="$(/usr/bin/env grep -Po '(?<=\-U sm )\w+$' "''${script_dos}" | /usr/bin/env xargs)"
 
-        /usr/bin/env dropdb -U sm --if-exists "${db_name}"
-        /usr/bin/env createdb -U sm --encoding=UTF8 "${db_name}"
-        /usr/bin/env psql -U sm -f "${script_sql}" "${db_name}"
+        /usr/bin/env dropdb -U sm --if-exists "''${db_name}"
+        /usr/bin/env createdb -U sm --encoding=UTF8 "''${db_name}"
+        /usr/bin/env psql -U sm -f "''${script_sql}" "''${db_name}"
       }
     '';
     envExtra = ''
