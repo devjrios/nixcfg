@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   environment.systemPackages = [
     # Webdev
@@ -10,7 +10,7 @@
     pkgs.texliveFull
     pkgs.pandoc
     pkgs.asciidoctor-with-extensions
-    pkgs.quarto
+    pkgs-unstable.quarto
 
     # System Utils
     pkgs.openconnect
