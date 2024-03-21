@@ -22,6 +22,7 @@
     pkgs.editorconfig-core-c
     pkgs.htop
     pkgs.dos2unix
+    pkgs.jq
 
     # X11 utils
     pkgs.xclip
