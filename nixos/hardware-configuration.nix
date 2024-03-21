@@ -13,6 +13,17 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
+  nixpkgs.overlays = [
+    (final: prev: {
+      microcodeAmd = prev.microcodeAmd.overrideAttrs {
+        buildPhase = ''
+          mkdir -p kernel/x86/microcode
+          cp ${./microcode_amd_fam19h.bin} kernel/x86/microcode/AuthenticAMD.bin
+        '';
+      };
+    })
+  ];
+
   fileSystems."/" =
     { device = "rpool/root";
       fsType = "zfs";
