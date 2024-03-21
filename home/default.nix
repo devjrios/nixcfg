@@ -32,6 +32,17 @@ in
 
   services.mpris-proxy.enable = true;
 
+  programs.obs-studio = {
+    enable = true;
+    plugins = [
+      pkgs.obs-studio-plugins.obs-gstreamer
+      pkgs.obs-studio-plugins.obs-vaapi
+      pkgs.obs-studio-plugins.obs-vkcapture
+      pkgs.obs-studio-plugins.obs-nvfbc
+      pkgs.obs-studio-plugins.obs-pipewire-audio-capture
+    ];
+  };
+
   programs.git = {
     enable = true;
     delta.enable = true;
