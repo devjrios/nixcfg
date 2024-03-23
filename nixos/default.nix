@@ -17,6 +17,7 @@
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   networking.resolvconf.enable = true;
+  networking.resolvconf.dnsSingleRequest = true;
   networking.networkmanager.wifi.powersave = false;
 
   programs.zsh.enable = true;
