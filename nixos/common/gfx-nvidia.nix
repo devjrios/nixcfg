@@ -1,12 +1,12 @@
 { config, lib, pkgs, ... }:
 let
-  nvStable = config.boot.kernelPackages.nvidiaPackages.stable;
+  nvProduction = config.boot.kernelPackages.nvidiaPackages.production;
   nvBeta = config.boot.kernelPackages.nvidiaPackages.beta;
   nvidiaPkg =
-    if (lib.versionOlder nvBeta.version nvStable.version) then
-      config.boot.kernelPackages.nvidiaPackages.stable
+    if (lib.versionOlder nvBeta.version nvProduction.version) then
+      nvProduction
     else
-      config.boot.kernelPackages.nvidiaPackages.beta;
+      nvBeta;
 in
 {
   config = {
