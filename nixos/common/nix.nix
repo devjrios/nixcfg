@@ -2,7 +2,7 @@
   nixpkgs.config.allowUnfree = true;
 
   nix.settings = {
-
+    eval-cache = false;
     experimental-features = "nix-command flakes";
     accept-flake-config = true;
     auto-optimise-store = true;
