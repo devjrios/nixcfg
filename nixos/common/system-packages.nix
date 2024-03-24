@@ -2,7 +2,7 @@
 {
   environment.systemPackages = [
     # Webdev
-    pkgs.google-chrome
+    pkgs-unstable.google-chrome
     pkgs.nodejs_18
     pkgs.corepack_18
 
