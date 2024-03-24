@@ -12,7 +12,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-unstable = nixpkgs-unstable.legacyPackages.${system};
+      pkgs-unstable = import nixpkgs-unstable { system = "${system}"; config = { allowUnfree = true; }; };
     in
     {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
