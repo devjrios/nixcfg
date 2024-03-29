@@ -143,6 +143,25 @@
     '';
   };
 
+  services.rsyncd.enable = true;
+  services.rsyncd.settings = {
+    ftp = {
+      gid = 100;
+      uid = 1000;
+      comment = "Home config";
+      path = "/home/jrios/";
+      list = true;
+      "read only" = false;
+    };
+    global = {
+      "hosts allow" = "*";
+      gid = "nobody";
+      "max connections" = 4;
+      uid = "nobody";
+      "use chroot" = true;
+    };
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = [
@@ -166,22 +185,22 @@
     pkgs.libreoffice-qt
     pkgs.vlc
     (pkgs.writeShellScriptBin "make" ''
-    args="$@"
-    nix-shell --impure -p stdenv --command "make $args"
+      args="$@"
+      nix-shell --impure -p stdenv --command "make $args"
     '')
     (pkgs.writeShellScriptBin "gcc" ''
-    args="$@"
-    nix-shell --impure -p stdenv --command "gcc $args"
+      args="$@"
+      nix-shell --impure -p stdenv --command "gcc $args"
     '')
   ];
 
   environment.sessionVariables = rec {
-    XDG_CACHE_HOME  = "$HOME/.cache";
+    XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME   = "$HOME/.local/share";
-    XDG_STATE_HOME  = "$HOME/.local/state";
-    XDG_BIN_HOME    = "$HOME/.local/bin";
-    PATH            = [ "${XDG_BIN_HOME}" ];
+    XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_STATE_HOME = "$HOME/.local/state";
+    XDG_BIN_HOME = "$HOME/.local/bin";
+    PATH = [ "${XDG_BIN_HOME}" ];
   };
 
   fonts = {
@@ -214,6 +233,11 @@
   programs.zsh.enable = true;
   programs.partition-manager.enable = true;
   programs.nix-ld.enable = true;
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 80 443 873 ];
+  };
 
   system.stateVersion = "23.11";
 
