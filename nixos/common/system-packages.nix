@@ -1,8 +1,8 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = [
     # Webdev
-    pkgs-unstable.google-chrome
+    pkgs.google-chrome
     pkgs.nodejs_18
     pkgs.corepack_18
 
@@ -10,7 +10,7 @@
     pkgs.texliveFull
     pkgs.pandoc
     pkgs.asciidoctor-with-extensions
-    pkgs-unstable.quarto
+    pkgs.quarto
 
     # System Utils
     pkgs.openconnect
@@ -23,6 +23,10 @@
     pkgs.htop
     pkgs.dos2unix
     pkgs.jq
+    # Systray dependency
+    pkgs.gnomeExtensions.appindicator
+    # Needed since there it's not installed by default
+    pkgs.gnome.adwaita-icon-theme
 
     # X11 utils
     pkgs.xclip

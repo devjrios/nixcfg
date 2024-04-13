@@ -22,6 +22,10 @@ in
   # Only available in unstable branch ...
   # xdg.portal.xdgOpenUsePortal = true;
 
+  dconf.settings = {
+    "org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
+
   home.packages = [
     gdk
     pkgs.jetbrains.datagrip

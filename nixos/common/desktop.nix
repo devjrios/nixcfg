@@ -41,7 +41,13 @@
     keycode 66 = Home NoSymbol Home
     EOF
   '';
-  services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
+
+  services.xserver.desktopManager.gnome.enable = true;
+  # Needed for systray
+  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+  programs.seahorse.enable = true;
+  programs.dconf.enable = true;
 
   services.xserver = {
     layout = "us";
