@@ -44,5 +44,11 @@
     args="$@"
     nix-shell --impure -p stdenv --command "gcc $args"
     '')
+    (pkgs.writeShellScriptBin "replaceCaps" ''
+    sleep 3 && ${pkgs.xorg.xmodmap}/bin/xmodmap - <<'EOF'
+    clear lock
+    keycode 66 = Home NoSymbol Home
+    EOF
+    '')
   ];
 }

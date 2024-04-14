@@ -26,6 +26,28 @@ in
     "org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
 
+  systemd.user.services = {
+    xmodmap = {
+      Unit = {
+        Description = "A simple xmodmap remap";
+        After = "graphical-session.target";
+        BindsTo = "graphical-session.target";
+        PartOf = "graphical-session.target";
+        Requisite = "graphical-session.target";
+        # ConditionEnvironment = "DISPLAY";
+        ConditionEnvironment = [ "DISPLAY" "XAUTHORITY" ];
+      };
+      Service = {
+        Type = "oneshot";
+        ExecStart = "/usr/bin/env replaceCaps";
+        RemainAfterExit = "no";
+      };
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
+  };
+
   home.packages = [
     gdk
     pkgs.jetbrains.datagrip
