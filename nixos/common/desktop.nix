@@ -84,6 +84,8 @@
     evince # document viewer
   ]);
 
+  programs.evince.enable = true;
+
   services.xserver = {
     layout = "us";
     xkbVariant = "";
