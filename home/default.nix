@@ -34,13 +34,13 @@ in
 
   programs.obs-studio = {
     enable = true;
-    plugins = [
-      pkgs.obs-studio-plugins.obs-gstreamer
-      pkgs.obs-studio-plugins.obs-vaapi
-      pkgs.obs-studio-plugins.obs-vkcapture
-      pkgs.obs-studio-plugins.obs-nvfbc
-      pkgs.obs-studio-plugins.obs-pipewire-audio-capture
-    ];
+    # plugins = [
+    #  pkgs.obs-studio-plugins.obs-gstreamer
+    #  pkgs.obs-studio-plugins.obs-vaapi
+    #  pkgs.obs-studio-plugins.obs-vkcapture
+    #  pkgs.obs-studio-plugins.obs-nvfbc
+    #  pkgs.obs-studio-plugins.obs-pipewire-audio-capture
+    # ];
   };
 
   programs.git = {

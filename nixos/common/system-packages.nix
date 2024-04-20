@@ -9,7 +9,7 @@
     # For docs
     pkgs.texliveFull
     pkgs.pandoc
-    pkgs.asciidoctor-with-extensions
+    # pkgs.asciidoctor-with-extensions
     pkgs.quarto
 
     # System Utils
