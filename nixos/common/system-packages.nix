@@ -1,8 +1,8 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 {
   environment.systemPackages = [
     # Webdev
-    pkgs-unstable.google-chrome
+    pkgs.google-chrome
     pkgs.nodejs_18
     pkgs.corepack_18
 
@@ -10,7 +10,7 @@
     pkgs.texliveFull
     pkgs.pandoc
     pkgs.asciidoctor-with-extensions
-    pkgs-unstable.quarto
+    pkgs.quarto
 
     # System Utils
     pkgs.openconnect
