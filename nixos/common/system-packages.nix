@@ -23,6 +23,7 @@
     pkgs.htop
     pkgs.dos2unix
     pkgs.jq
+    pkgs.git
 
     # X11 utils
     pkgs.xclip
