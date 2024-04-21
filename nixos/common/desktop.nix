@@ -33,6 +33,22 @@
     '';
   };
 
+  environment.variables = {
+    KWIN_COMPOSE = "N";
+    # KWIN_OPENGL_INTERFACE should be left out, didn't work.
+    # KWIN_OPENGL_INTERFACE = "egl";
+    # KWIN_TRIPLE_BUFFER = "1";
+    # not sure about __GL_MaxFramesAllowed
+    # __GL_MaxFramesAllowed = "1";
+    # KWIN_COMPOSE = "O2ES";
+    # KWIN_X11_REFRESH_RATE = "144000";
+    # KWIN_X11_NO_SYNC_TO_VBLANK = "1";
+    # KWIN_X11_FORCE_SOFTWARE_VSYNC = "1";
+    # CLUTTER_DEFAULT_FPS = "144";
+    # __GL_SYNC_DISPLAY_DEVICE = "eDP";
+    # __GL_SYNC_TO_VBLANK = "0";
+  };
+
   services.xserver.enable = true;
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.displayManager.sessionCommands = ''

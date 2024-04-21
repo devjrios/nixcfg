@@ -6,18 +6,24 @@ let
     kubectl
     cloud_sql_proxy
   ]);
+  pyInterps = [ pkgs.python39 ];
 in
 {
 
   fonts.fontconfig.enable = true;
 
   home.sessionPath = [ "$HOME/.jdks" ];
-  home.file = (builtins.listToAttrs (builtins.map
+  home.file = (builtins.listToAttrs ((builtins.map
     (jdk: {
       name = ".jdks/${jdk.version}";
       value = { source = jdk; };
     })
-    additionalJDKs));
+    additionalJDKs) ++ (builtins.map
+    (pyint: {
+      name = ".pyvm/${pyint.version}";
+      value = { source = pyint; };
+    })
+    pyInterps)));
 
   # Only available in unstable branch ...
   # xdg.portal.xdgOpenUsePortal = true;
