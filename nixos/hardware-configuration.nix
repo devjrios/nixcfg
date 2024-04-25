@@ -12,6 +12,10 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "zfs.zfs_arc_max=4294967296"
+    "zfs.zfs_arc_pc_percent=25"
+  ];
 
   nixpkgs.overlays = [
     (final: prev: {
