@@ -11,6 +11,7 @@
     pkgs.pandoc
     # pkgs.asciidoctor-with-extensions
     pkgs.quarto
+    pkgs.vscode-fhs
 
     # System Utils
     pkgs.openconnect
