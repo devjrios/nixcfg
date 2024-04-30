@@ -25,6 +25,7 @@
     pkgs.dos2unix
     pkgs.jq
     pkgs.git
+    pkgs.quickemu
 
     # X11 utils
     pkgs.xclip
