@@ -25,11 +25,16 @@
       host  all      test        ::1/128        scram-sha-256
       local all      test                       scram-sha-256
 
+      host  all      airflow_user 127.0.0.1/32  scram-sha-256
+      host  all      airflow_user ::1/128       scram-sha-256
+      local all      airflow_user               scram-sha-256
+
       local all      postgres                   trust
       local all      root                       trust
     '';
     initialScript = pkgs.writeText "init-sql-script" ''
       CREATE USER sm WITH SUPERUSER ENCRYPTED PASSWORD '1234';
+      CREATE USER airflow_user WITH SUPERUSER ENCRYPTED PASSWORD '1234';
     '';
   };
 
