@@ -26,6 +26,7 @@
     pkgs.jq
     pkgs.git
     pkgs.quickemu
+    pkgs.firefox-esr
 
     # X11 utils
     pkgs.xclip
