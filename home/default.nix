@@ -36,6 +36,18 @@ in
     pkgs.spotify
   ];
 
+  services.tomcat = {
+    enable = true;
+    webapps = [ "''${HOME}/.local/state/tomcat9/webapps" "/var/run/tomcat9/webapps" ];
+    user = "''${USER}";
+    extraGroups = [ "users" ];
+    javaOpts = [ "-Dawt.useSystemAAFontSettings=lcd" ];
+    package = pkgs.tomcat9;
+    jdk = pkgs.zulu8;
+    purifyOnStart = true;
+    baseDir = "/var/run/tomcat9";
+  };
+
   services.mpris-proxy.enable = true;
 
   programs.obs-studio = {
