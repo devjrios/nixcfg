@@ -104,7 +104,6 @@
 
   services.tomcat = {
     enable = true;
-    webapps = [ "/var/run/tomcat9/webapps" ];
     extraGroups = [ "users" "wheel" ];
     javaOpts = [ "-Dawt.useSystemAAFontSettings=lcd" ];
     package = pkgs.tomcat9;
