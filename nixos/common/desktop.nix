@@ -102,4 +102,15 @@
     PATH = [ "${XDG_BIN_HOME}" ];
   };
 
+  services.tomcat = {
+    enable = true;
+    webapps = [ "/var/run/tomcat9/webapps" ];
+    extraGroups = [ "users" "wheel" ];
+    javaOpts = [ "-Dawt.useSystemAAFontSettings=lcd" ];
+    package = pkgs.tomcat9;
+    jdk = pkgs.zulu8;
+    purifyOnStart = true;
+    baseDir = "/var/run/tomcat9";
+  };
+
 }

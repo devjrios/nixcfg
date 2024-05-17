@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   additionalJDKs = [ pkgs.zulu17 pkgs.zulu8 ];
   gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
@@ -35,18 +35,6 @@ in
     pkgs.keepassxc
     pkgs.spotify
   ];
-
-  services.tomcat = {
-    enable = true;
-    webapps = [ "''${HOME}/.local/state/tomcat9/webapps" "/var/run/tomcat9/webapps" ];
-    user = "''${USER}";
-    extraGroups = [ "users" ];
-    javaOpts = [ "-Dawt.useSystemAAFontSettings=lcd" ];
-    package = pkgs.tomcat9;
-    jdk = pkgs.zulu8;
-    purifyOnStart = true;
-    baseDir = "/var/run/tomcat9";
-  };
 
   services.mpris-proxy.enable = true;
 
