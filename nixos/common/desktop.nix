@@ -104,12 +104,14 @@
 
   services.tomcat = {
     enable = true;
+    user = "tomcat";
+    webapps = [ "/var/run/user/1000/tomcat9/webapps" "/srv/jrios/tomcat9/webapps" ];
     extraGroups = [ "users" "wheel" ];
     javaOpts = [ "-Dawt.useSystemAAFontSettings=lcd" ];
     package = pkgs.tomcat9;
     jdk = pkgs.zulu8;
     purifyOnStart = true;
-    baseDir = "/var/run/tomcat9";
+    baseDir = "/var/lib/tomcat9";
   };
 
 }
