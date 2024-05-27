@@ -27,6 +27,7 @@
     pkgs.git
     pkgs.quickemu
     pkgs.firefox-esr
+    pkgs.anydesk
 
     # X11 utils
     pkgs.xclip
