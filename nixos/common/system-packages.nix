@@ -52,5 +52,9 @@
     args="$@"
     nix-shell --impure -p stdenv --command "gcc $args"
     '')
+    (pkgs.writeShellScriptBin "powershell" ''
+    args="$@"
+    nix-shell --impure -p stdenv --command "pwsh $args"
+    '')
   ];
 }
