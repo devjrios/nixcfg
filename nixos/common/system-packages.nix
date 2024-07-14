@@ -17,6 +17,7 @@
     pkgs.vscode-fhs
 
     # System Utils
+    pkgs.powershell
     pkgs.openconnect
     pkgs.wget
     pkgs.librsvg
