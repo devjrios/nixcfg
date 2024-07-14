@@ -148,7 +148,7 @@ in
       plugins = [ "git" "colored-man-pages" "history" "jsontools" "copypath" ];
     };
     syntaxHighlighting.enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     initExtra = ''
       nixify() {
         if [ ! -e ./.envrc ]; then

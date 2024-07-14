@@ -4,6 +4,7 @@
   hardware.enableAllFirmware = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 2;
+  # boot.loader.initScript.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.extraEntries = {
     "firmware_update.conf" = ''
