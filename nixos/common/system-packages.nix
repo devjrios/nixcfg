@@ -1,5 +1,8 @@
 { pkgs, ... }:
 {
+
+  networking.firewall.enable = false;
+
   environment.systemPackages = [
     # Webdev
     pkgs.google-chrome
@@ -37,6 +40,8 @@
     # Extra tools
     pkgs.libreoffice-qt
     pkgs.vlc
+
+    pkgs.qgis-ltr
 
     (pkgs.writeShellScriptBin "make" ''
     args="$@"

@@ -7,6 +7,7 @@
   };
 
   services.postgresql = {
+    extraPlugins = [ pkgs.postgresql15Packages.postgis ];
     enable = true;
     package = pkgs.postgresql_15;
     settings = {
@@ -18,9 +19,13 @@
       #...
       #type database DBuser origin-address auth-method
       host  all      sm          127.0.0.1/32    scram-sha-256
+      host  all      sgis        127.0.0.1/32    scram-sha-256
       host  all      sm          192.168.1.0/24  scram-sha-256
+      host  all      sgis        192.168.1.0/24  scram-sha-256
       host  all      sm          ::1/128         scram-sha-256
+      host  all      sgis        ::1/128         scram-sha-256
       local all      sm                          scram-sha-256
+      local all      sgis                        scram-sha-256
 
       host  all      test        127.0.0.1/32    scram-sha-256
       host  all      test        192.168.1.0/24  scram-sha-256
