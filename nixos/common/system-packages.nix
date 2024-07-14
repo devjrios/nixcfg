@@ -31,7 +31,7 @@
     pkgs.quickemu
     pkgs.firefox-esr
     pkgs.anydesk
-    pkgs.eclipses.eclipse-jee
+    # pkgs.eclipses.eclipse-jee
 
     # X11 utils
     pkgs.xclip
