@@ -25,13 +25,12 @@ in
     })
     pyInterps)));
 
-  # Only available in unstable branch ...
-  # xdg.portal.xdgOpenUsePortal = true;
+  xdg.portal.xdgOpenUsePortal = true;
 
   home.packages = [
     gdk
     pkgs.jetbrains.datagrip
-    pkgs.insomnia
+    pkgs.postman
     pkgs.keepassxc
     pkgs.spotify
   ];
