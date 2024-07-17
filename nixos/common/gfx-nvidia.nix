@@ -1,13 +1,4 @@
 { config, lib, pkgs, ... }:
-let
-  nvProduction = config.boot.kernelPackages.nvidiaPackages.production;
-  nvBeta = config.boot.kernelPackages.nvidiaPackages.beta;
-  nvidiaPkg =
-    if (lib.versionOlder nvBeta.version nvProduction.version) then
-      nvProduction
-    else
-      nvBeta;
-in
 {
   config = {
 
@@ -17,7 +8,7 @@ in
     services.xserver.videoDrivers = [ "nvidia" ];
 
     hardware.nvidia = {
-      package = nvidiaPkg;
+      package = config.boot.kernelPackages.nvidiaPackages.production;
       open = false;
       modesetting.enable = true;
       nvidiaSettings = false;
