@@ -4,5 +4,5 @@
   # boot.kernelParams = [ "zswap.enabled=1" ];
   boot.tmp.cleanOnBoot = true;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod;
-  boot.kernelPackages = pkgs.linuxPackages_6_1_hardened;
+  boot.kernelPackages = pkgs.linuxPackages_6_1;
 }
