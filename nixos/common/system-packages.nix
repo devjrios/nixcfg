@@ -43,6 +43,7 @@
     pkgs.vlc
 
     pkgs.qgis-ltr
+    pkgs.subversionClient
 
     (pkgs.writeShellScriptBin "make" ''
     args="$@"
