@@ -44,6 +44,7 @@
 
     pkgs.qgis-ltr
     pkgs.subversionClient
+    pkgs.drawio
 
     (pkgs.writeShellScriptBin "make" ''
     args="$@"
