@@ -30,6 +30,9 @@ in
   home.packages = [
     gdk
     pkgs.jetbrains.datagrip
+    pkgs.jetbrains.webstorm
+    pkgs.jetbrains-toolbox
+    pkgs.jetbrains.idea-ultimate
     pkgs.postman
     pkgs.keepassxc
     pkgs.spotify
