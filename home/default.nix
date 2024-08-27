@@ -32,6 +32,7 @@ in
     pkgs.jetbrains.datagrip
     pkgs.jetbrains.webstorm
     pkgs.jetbrains.idea-ultimate
+    pkgs.jetbrains.pycharm-professional
     pkgs.postman
     pkgs.keepassxc
     pkgs.spotify
