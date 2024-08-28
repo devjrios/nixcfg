@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, unstable, ... }:
 let
   additionalJDKs = [ pkgs.jdk17 pkgs.jdk8 ];
   gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
@@ -33,6 +33,7 @@ in
     pkgs.jetbrains.webstorm
     pkgs.jetbrains.idea-ultimate
     pkgs.jetbrains.pycharm-professional
+    unstable.zed-editor
     pkgs.postman
     pkgs.keepassxc
     pkgs.spotify
