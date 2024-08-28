@@ -7,6 +7,7 @@
     ./desktop.nix
     ./dev-services.nix
     ./kernel-cfg.nix
+    ./pstate.nix
     ./gfx-nvidia.nix
   ];
   environment.shellAliases.sudo = "doas";
