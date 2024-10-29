@@ -77,19 +77,22 @@
   services.printing.enable = true;
 
   fonts = {
+    enableDefaultPackages = true;
     packages = with pkgs; [
-      dejavu_fonts
-      freefont_ttf
+      # dejavu_fonts
+      # freefont_ttf
+      # liberation_ttf
+      # unifont
+      # wine64Packages.fonts
+      # corefonts
       gyre-fonts
-      liberation_ttf
-      unifont
       noto-fonts-color-emoji
-      wine64Packages.fonts
-      corefonts
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "VictorMono" ]; })
     ];
     fontconfig = {
       localConf = ''
+      <?xml version="1.0"?>
+      <fontconfig>
         <alias>
           <family>Glorious Monospaced Shell</family>
           <prefer>
@@ -99,6 +102,15 @@
             <family>Noto Color Emoji</family>
           </prefer>
         </alias>
+        <match target="pattern">
+          <test qual="any" name="family">
+            <string>NewCenturySchlbk</string>
+          </test>
+          <edit name="family" mode="assign" binding="same">
+            <string>TeX Gyre Schola</string>
+          </edit>
+        </match>
+      </fontconfig>
       '';
     };
   };
