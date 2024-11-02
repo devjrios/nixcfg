@@ -31,6 +31,7 @@
     pkgs.git
     pkgs.quickemu
     pkgs.firefox-esr
+    pkgs.libsForQt5.konqueror
     pkgs.anydesk
     # pkgs.eclipses.eclipse-jee
 
