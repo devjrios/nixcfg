@@ -1,10 +1,12 @@
 { pkgs, ... }:
 {
 
-  virtualisation.docker.rootless = {
-    enable = true;
-    setSocketVariable = true;
-  };
+  # virtualisation.docker.rootless = {
+  # enable = true;
+  # setSocketVariable = true;
+  # };
+
+  virtualisation.docker.enable = true;
 
   services.postgresql = {
     extraPlugins = [ pkgs.postgresql15Packages.postgis ];

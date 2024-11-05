@@ -24,10 +24,5 @@
   services.fwupd.enable = true;
   programs.nix-ld.enable = true;
   # programs.dconf.enable = false;
-
-  networking.extraHosts = ''
-  192.168.10.70 nepqas.medellin.gov.co
-  '';
-
   system.stateVersion = "23.11";
 }
