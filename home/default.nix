@@ -37,6 +37,7 @@ in
     pkgs.postman
     pkgs.keepassxc
     pkgs.spotify
+    pkgs.flatpak
   ];
 
   services.mpris-proxy.enable = true;
@@ -229,6 +230,7 @@ in
       if [[ -z "$SSH_ASKPASS_REQUIRE" ]]; then
         export SSH_ASKPASS_REQUIRE="prefer"
       fi
+      export XDG_DATA_DIRS=$XDG_DATA_DIRS:/usr/share:/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share
     '';
   };
 

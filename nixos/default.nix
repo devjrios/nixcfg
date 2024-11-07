@@ -14,6 +14,9 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
+  # For flatpaks
+  environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
+
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   networking.resolvconf.enable = true;
