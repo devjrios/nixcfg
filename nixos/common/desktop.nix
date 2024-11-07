@@ -77,6 +77,7 @@
   services.printing.enable = true;
 
   fonts = {
+    # fontDir.enable = true;
     enableDefaultPackages = true;
     packages = with pkgs; [
       # dejavu_fonts
