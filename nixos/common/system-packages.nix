@@ -34,7 +34,6 @@
     pkgs.libsForQt5.konqueror
     pkgs.epiphany
     pkgs.luakit
-    pkgs.anydesk
     # pkgs.eclipses.eclipse-jee
 
     # X11 utils
