@@ -88,7 +88,13 @@
     models = "/usr/local/var/ollama/models";
   };
 
-  services.private-gpt.enable = true;
+  services.private-gpt = {
+    enable = true;
+    stateDir = "/usr/local/var/private-gpt";
+    settings.data = {
+      local_data_folder = "/usr/local/var/private-gpt";
+    };
+  };
 
   fonts = {
     # fontDir.enable = true;
