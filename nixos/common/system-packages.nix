@@ -6,8 +6,8 @@
   environment.systemPackages = [
     # Webdev
     pkgs.google-chrome
-    pkgs.nodejs_18
-    pkgs.corepack_18
+    pkgs.brave
+    pkgs.nodejs_20
 
     # For docs
     pkgs.texliveFull
@@ -31,6 +31,7 @@
     pkgs.git
     pkgs.quickemu
     pkgs.firefox-esr
+    pkgs.mullvad-browser
     pkgs.libsForQt5.konqueror
     pkgs.luakit
     # pkgs.eclipses.eclipse-jee
