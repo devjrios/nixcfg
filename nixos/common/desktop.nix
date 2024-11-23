@@ -76,6 +76,18 @@
 
   services.printing.enable = true;
 
+  services.ollama = {
+    enable = true;
+    acceleration = "cuda";
+    sandbox = true;
+    writablePaths = [
+      "/usr/local/var/ollama"
+      "/usr/local/var/ollama/models"
+    ];
+    home = "/usr/local/var/ollama";
+    models = "/usr/local/var/ollama/models";
+  };
+
   fonts = {
     # fontDir.enable = true;
     enableDefaultPackages = true;
