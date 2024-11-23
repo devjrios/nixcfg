@@ -88,6 +88,8 @@
     models = "/usr/local/var/ollama/models";
   };
 
+  services.private-gpt.enable = true;
+
   fonts = {
     # fontDir.enable = true;
     enableDefaultPackages = true;

@@ -40,7 +40,8 @@
     };
 
     # This is for docker containers
-    hardware.nvidia-container-toolkit.enable = true;
+    # Try again in the 24.11 release
+    # hardware.nvidia-container-toolkit.enable = true;
 
   };
 }
