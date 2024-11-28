@@ -1,6 +1,6 @@
 { pkgs, config, unstable, ... }:
 let
-  additionalJDKs = [ pkgs.jdk17 pkgs.jdk8 ];
+  additionalJDKs = [ pkgs.jdk21_headless pkgs.jdk17 pkgs.jdk8 ];
   gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
     gke-gcloud-auth-plugin
     kubectl
@@ -33,7 +33,6 @@ in
     pkgs.jetbrains.webstorm
     pkgs.jetbrains.idea-ultimate
     pkgs.jetbrains.pycharm-professional
-    unstable.zed-editor
     pkgs.postman
     pkgs.keepassxc
     pkgs.spotify
@@ -57,6 +56,7 @@ in
     enable = true;
     delta.enable = true;
     extraConfig = {
+      safe.directory = [ "/usr/local/var/nixcfg" ];
       core = {
         autocrlf = "input";
         whitespace = "indent-with-non-tab,tabwidth=4";
@@ -331,9 +331,11 @@ in
           y = 0;
         };
       };
-      shell = {
-        args = [ "-l" ];
-        program = "${pkgs.tmux}/bin/tmux";
+      terminal = {
+        shell = {
+          args = [ "-l" ];
+          program = "${pkgs.tmux}/bin/tmux";
+        };
       };
       window = {
         blur = true;

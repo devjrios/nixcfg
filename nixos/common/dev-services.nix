@@ -9,7 +9,7 @@
   virtualisation.docker.enable = true;
 
   services.postgresql = {
-    extraPlugins = [ pkgs.postgresql15Packages.postgis ];
+    extensions = [ pkgs.postgresql15Packages.postgis ];
     enable = true;
     package = pkgs.postgresql_15;
     settings = {

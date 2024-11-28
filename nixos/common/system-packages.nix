@@ -12,7 +12,6 @@
     # For docs
     pkgs.texliveFull
     pkgs.pandoc
-    # pkgs.asciidoctor-with-extensions
     pkgs.quarto
     pkgs.vscode-fhs
 
@@ -32,9 +31,7 @@
     pkgs.quickemu
     pkgs.firefox-esr
     pkgs.mullvad-browser
-    pkgs.libsForQt5.konqueror
     pkgs.luakit
-    # pkgs.eclipses.eclipse-jee
 
     # X11 utils
     pkgs.xclip

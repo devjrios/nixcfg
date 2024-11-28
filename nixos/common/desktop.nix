@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  sound.enable = false;
   hardware.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -17,7 +16,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     wireplumber.enable = true;
-    # jack.enable = true;
   };
   nixpkgs.config.pulseaudio = true;
 
@@ -35,69 +33,34 @@
 
   environment.variables = {
     KWIN_COMPOSE = "N";
-    # KWIN_OPENGL_INTERFACE should be left out, didn't work.
-    # KWIN_OPENGL_INTERFACE = "egl";
-    # KWIN_TRIPLE_BUFFER = "1";
-    # not sure about __GL_MaxFramesAllowed
-    # __GL_MaxFramesAllowed = "1";
-    # KWIN_COMPOSE = "O2ES";
-    # KWIN_X11_REFRESH_RATE = "144000";
-    # KWIN_X11_NO_SYNC_TO_VBLANK = "1";
-    # KWIN_X11_FORCE_SOFTWARE_VSYNC = "1";
-    # CLUTTER_DEFAULT_FPS = "144";
-    # __GL_SYNC_DISPLAY_DEVICE = "eDP";
-    # __GL_SYNC_TO_VBLANK = "0";
+    # KWIN_DRM_DEVICES="/dev/dri/card1";
   };
 
   services.xserver.enable = true;
+  programs.xwayland.enable = true;
   services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
   services.xserver.displayManager.sessionCommands = ''
     sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap - <<'EOF'
     clear lock
     keycode 66 = Home NoSymbol Home
     EOF
   '';
-  services.xserver.desktopManager.plasma5.enable = true;
-  # services.desktopManager.plasma6.enable = true;
-  # services.displayManager.defaultSession = "plasmax11";
-
-  # environment.plasma6.excludePackages = with pkgs.kdePackages; [
-  #   plasma-browser-integration
-  #   konsole
-  #   oxygen
-  # ];
-
-  services.xserver = {
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
+  # services.displayManager.sddm.wayland.compositor = "kwin";
+  # services.displayManager.sddm.wayland.enable = true;
 
   services.printing.enable = true;
 
   services.ollama = {
     enable = true;
     acceleration = "cuda";
-    sandbox = true;
-    writablePaths = [
-      "/usr/local/var/ollama"
-      "/usr/local/var/ollama/models"
-    ];
     home = "/usr/local/var/ollama";
     models = "/usr/local/var/ollama/models";
   };
 
   fonts = {
-    # fontDir.enable = true;
     enableDefaultPackages = true;
     packages = with pkgs; [
-      # dejavu_fonts
-      # freefont_ttf
-      # liberation_ttf
-      # unifont
-      # wine64Packages.fonts
-      # corefonts
       gyre-fonts
       noto-fonts-color-emoji
       (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "VictorMono" ]; })
