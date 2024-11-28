@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
@@ -15,7 +15,7 @@
   };
 
   # For flatpaks
-  environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
+  # environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
 
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
@@ -27,5 +27,6 @@
   services.fwupd.enable = true;
   programs.nix-ld.enable = true;
   programs.dconf.enable = true;
+  xdg.mime.enable = lib.mkForce false;
   system.stateVersion = "23.11";
 }
