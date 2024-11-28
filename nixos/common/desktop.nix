@@ -46,6 +46,8 @@
     keycode 66 = Home NoSymbol Home
     EOF
   '';
+  services.displayManager.defaultSession = "plasmax11";
+
   # services.displayManager.sddm.wayland.compositor = "kwin";
   # services.displayManager.sddm.wayland.enable = true;
 

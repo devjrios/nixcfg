@@ -26,6 +26,6 @@
   programs.zsh.enable = true;
   services.fwupd.enable = true;
   programs.nix-ld.enable = true;
-  # programs.dconf.enable = false;
+  programs.dconf.enable = true;
   system.stateVersion = "23.11";
 }
