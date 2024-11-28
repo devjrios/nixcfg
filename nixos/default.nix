@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
@@ -14,9 +14,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  # For flatpaks
-  # environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
-
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
   networking.resolvconf.enable = true;
@@ -27,6 +24,5 @@
   services.fwupd.enable = true;
   programs.nix-ld.enable = true;
   programs.dconf.enable = true;
-  xdg.mime.enable = lib.mkForce false;
   system.stateVersion = "23.11";
 }
