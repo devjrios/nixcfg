@@ -12,7 +12,6 @@
     # For docs
     pkgs.texliveFull
     pkgs.pandoc
-    pkgs.quarto
     pkgs.vscode-fhs
 
     # System Utils
@@ -31,7 +30,6 @@
     pkgs.quickemu
     pkgs.firefox-esr
     pkgs.mullvad-browser
-    pkgs.emscripten
 
     # X11 utils
     pkgs.xclip
@@ -41,7 +39,6 @@
     pkgs.libreoffice-qt
     pkgs.vlc
 
-    pkgs.qgis-ltr
     pkgs.subversionClient
     pkgs.drawio
 

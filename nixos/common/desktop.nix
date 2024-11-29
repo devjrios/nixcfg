@@ -52,14 +52,7 @@
   # services.displayManager.sddm.wayland.enable = true;
 
   services.printing.enable = true;
-
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
-    home = "/usr/local/var/ollama";
-    models = "/usr/local/var/ollama/models";
-  };
-
+  
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
