@@ -52,7 +52,7 @@
   # services.displayManager.sddm.wayland.enable = true;
 
   services.printing.enable = true;
-  
+
   fonts = {
     enableDefaultPackages = true;
     packages = with pkgs; [
@@ -90,6 +90,7 @@
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
+    XDG_DATA_DIRS = [ "${XDG_DATA_HOME}/flatpak/exports/share" ];
     XDG_STATE_HOME = "$HOME/.local/state";
     XDG_BIN_HOME = "$HOME/.local/bin";
     PATH = [ "${XDG_BIN_HOME}" ];
