@@ -29,6 +29,7 @@ in
 
   home.packages = [
     gdk
+    pkgs.jetbrains.clion
     pkgs.jetbrains.datagrip
     pkgs.jetbrains.webstorm
     pkgs.jetbrains.idea-ultimate

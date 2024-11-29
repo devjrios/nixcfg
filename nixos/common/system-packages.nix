@@ -31,7 +31,7 @@
     pkgs.quickemu
     pkgs.firefox-esr
     pkgs.mullvad-browser
-    pkgs.luakit
+    pkgs.emscripten
 
     # X11 utils
     pkgs.xclip
