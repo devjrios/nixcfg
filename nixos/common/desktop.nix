@@ -37,9 +37,15 @@
   };
 
   services.xserver.enable = true;
-  programs.xwayland.enable = true;
+  # programs.xwayland.enable = true;
   services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.desktopManager.plasma6 = {
+    enable = true;
+    enableQt5Integration = false;
+  };
+  environment.systemPackages = [
+    pkgs.kdePackages.kdenlive
+  ];
   services.xserver.displayManager.sessionCommands = ''
     sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap - <<'EOF'
     clear lock
