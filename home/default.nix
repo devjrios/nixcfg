@@ -33,21 +33,6 @@ in
     ];
   };
 
-  programs.poetry = {
-    enable = false;
-    settings = {
-      virtualenvs.create = true;
-      installer.parallel = true;
-      installer.no-binary = false;
-      installer.modern-installation = true;
-      experimental.system-git-client = false;
-      virtualenvs.in-project = true;
-      virtualenvs.options.always-copy = true;
-      virtualenvs.options.no-pip = true;
-      virtualenvs.options.no-setuptools = true;
-    };
-  };
-
   programs.vscode = {
     enable = true;
     enableExtensionUpdateCheck = false;
@@ -57,18 +42,6 @@ in
     extensions = [
       pkgs.vscode-extensions.editorconfig.editorconfig
       pkgs.vscode-extensions.dracula-theme.theme-dracula
-      pkgs.vscode-extensions.vscjava.vscode-java-pack
-      pkgs.vscode-extensions.vscjava.vscode-spring-initializr
-      pkgs.vscode-extensions.vscjava.vscode-maven
-      pkgs.vscode-extensions.redhat.java
-      pkgs.vscode-extensions.redhat.vscode-yaml
-      pkgs.vscode-extensions.redhat.vscode-xml
-      pkgs.vscode-extensions.ms-vscode.cpptools
-      pkgs.vscode-extensions.llvm-vs-code-extensions.vscode-clangd
-      pkgs.vscode-extensions.ms-python.python
-      pkgs.vscode-extensions.ziglang.vscode-zig
-      pkgs.vscode-extensions.yoavbls.pretty-ts-errors
-      pkgs.vscode-extensions.esbenp.prettier-vscode
     ];
     userSettings = {
       "workbench.startupEditor" = "none";
