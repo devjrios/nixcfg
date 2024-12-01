@@ -1,29 +1,14 @@
 { pkgs, config, unstable, ... }:
 let
-  additionalJDKs = [ pkgs.jdk21_headless pkgs.jdk17 pkgs.jdk8 ];
   gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
     gke-gcloud-auth-plugin
     kubectl
     cloud_sql_proxy
   ]);
-  pyInterps = [ pkgs.python39 ];
 in
 {
 
   fonts.fontconfig.enable = true;
-
-  home.sessionPath = [ "$HOME/.jdks" ];
-  home.file = (builtins.listToAttrs ((builtins.map
-    (jdk: {
-      name = ".jdks/${jdk.version}";
-      value = { source = jdk; };
-    })
-    additionalJDKs) ++ (builtins.map
-    (pyint: {
-      name = ".pyvm/${pyint.version}";
-      value = { source = pyint; };
-    })
-    pyInterps)));
 
   home.packages = [
     gdk
@@ -42,13 +27,119 @@ in
 
   programs.obs-studio = {
     enable = true;
-    # plugins = [
-    #  pkgs.obs-studio-plugins.obs-gstreamer
-    #  pkgs.obs-studio-plugins.obs-vaapi
-    #  pkgs.obs-studio-plugins.obs-vkcapture
-    #  pkgs.obs-studio-plugins.obs-nvfbc
-    #  pkgs.obs-studio-plugins.obs-pipewire-audio-capture
-    # ];
+    plugins = [
+      pkgs.obs-studio-plugins.obs-backgroundremoval
+      pkgs.obs-studio-plugins.obs-pipewire-audio-capture
+    ];
+  };
+
+  programs.poetry = {
+    enable = true;
+    settings = {
+      virtualenvs.create = true;
+      installer.parallel = true;
+      installer.no-binary = false;
+      installer.modern-installation = true;
+      experimental.system-git-client = false;
+      virtualenvs.in-project = true;
+      virtualenvs.options.always-copy = true;
+      virtualenvs.options.no-pip = true;
+      virtualenvs.options.no-setuptools = true;
+    };
+  };
+
+  programs.vscode = {
+    enable = true;
+    enableExtensionUpdateCheck = false;
+    enableUpdateCheck = false;
+    package = pkgs.vscodium;
+    mutableExtensionsDir = true;
+    extensions = [
+      pkgs.vscode-extensions.editorconfig.editorconfig
+      pkgs.vscode-extensions.dracula-theme.theme-dracula
+      pkgs.vscode-extensions.vscjava.vscode-java-pack
+      pkgs.vscode-extensions.vscjava.vscode-spring-initializr
+      pkgs.vscode-extensions.vscjava.vscode-maven
+      pkgs.vscode-extensions.redhat.java
+      pkgs.vscode-extensions.redhat.vscode-yaml
+      pkgs.vscode-extensions.redhat.vscode-xml
+      pkgs.vscode-extensions.ms-vscode.cpptools
+      pkgs.vscode-extensions.llvm-vs-code-extensions.vscode-clangd
+      pkgs.vscode-extensions.ms-python.python
+      pkgs.vscode-extensions.ziglang.vscode-zig
+      pkgs.vscode-extensions.yoavbls.pretty-ts-errors
+      pkgs.vscode-extensions.esbenp.prettier-vscode
+    ];
+    userSettings = {
+      "workbench.startupEditor" = "none",
+      "workbench.colorTheme" = "Dracula Theme",
+      "workbench.editor.enablePreview" = false,
+
+      "terminal.integrated.scrollback" = 50000,
+      "git.confirmSync" = false,
+
+      "security.workspace.trust.untrustedFiles" = "open",
+      "security.workspace.trust.enabled" = false,
+      "security.workspace.trust.startupPrompt" = "never",
+
+      "java.debug.settings.hotCodeReplace" = "auto",
+      "java.jdt.ls.vmargs" = "--add-opens=java.base/java.io=ALL-UNNAMED -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:disable",
+      "java.help.showReleaseNotes" = false,
+      "java.debug.settings.forceBuildBeforeLaunch" = false,
+      "java.server.launchMode" = "Standard",
+      "java.showBuildStatusOnStart.enabled" = "off",
+      "java.import.maven.offline.enabled" = true,
+      "java.maven.downloadSources" = false,
+      "java.eclipse.downloadSources" = false,
+      "java.progressReports.enabled" = false,
+      "java.configuration.runtimes" = [
+        {
+          "name" = "JavaSE-1.8",
+          "path" = "${pkgs.jdk8}/lib/openjdk/jre/",
+          "default" = true
+        },
+        {
+          "name" = "JavaSE-17",
+          "path" = "${pkgs.jdk17}/lib/openjdk/"
+        },
+        {
+          "name" = "JavaSE-21",
+          "path" = "${pkgs.jdk21_headless}/lib/openjdk/"
+        }
+      ],
+      "rsp-ui.enableStartServerOnActivation" = [
+        {
+          "id" = "redhat.vscode-community-server-connector",
+          "name" = "Community Server Connector",
+          "startOnActivation" = true
+        },
+        {
+          "id" = "redhat.vscode-server-connector",
+          "name" = "Red Hat Server Connector",
+          "startOnActivation" = false
+        }
+      ],
+      "rsp-ui.rsp.java.home" = "${pkgs.jdk21_headless}/lib/openjdk/",
+      "maven.executable.options" = "-Dmaven.javadoc.skip=true -Dmaven.test.skip=true",
+      "redhat.telemetry.enabled" = false,
+
+      "editor.fontFamily" = "'Comic Code Ligatures Medium'",
+      "editor.fontLigatures" = true,
+      "editor.minimap.enabled" = false,
+      "editor.wordBasedSuggestions" = "off",
+      "editor.rulers" = [ 79, 120 ],
+
+      "diffEditor.ignoreTrimWhitespace" = true,
+      "diffEditor.hideUnchangedRegions.enabled" = true,
+      
+      "task.allowAutomaticTasks" = "on",
+      "triggerTaskOnSave.on" = false,
+      
+      "window.zoomLevel" = -1,
+      "update.mode" = "none",
+      "update.showReleaseNotes" = false,
+      "extensions.autoUpdate" = false
+    };
   };
 
   programs.git = {
@@ -218,13 +309,6 @@ in
     envExtra = ''
       if [[ -z "$NIX_LD" ]]; then
         export NIX_LD=$(nix eval --impure --raw --expr 'let pkgs = import <nixpkgs> {}; NIX_LD = pkgs.lib.fileContents "''${pkgs.stdenv.cc}/nix-support/dynamic-linker"; in NIX_LD')
-      fi
-      if [[ -z "$PNPM_HOME" ]]; then
-        export PNPM_HOME="$HOME/.local/share/pnpm"
-        case ":$PATH:" in
-          *":$PNPM_HOME:"*) ;;
-          *) export PATH="$PNPM_HOME:$PATH" ;;
-        esac
       fi
       if [[ -z "$SSH_ASKPASS_REQUIRE" ]]; then
         export SSH_ASKPASS_REQUIRE="prefer"

@@ -4,21 +4,18 @@
   networking.firewall.enable = false;
 
   environment.systemPackages = [
-    # Webdev
     pkgs.google-chrome
     pkgs.brave
-    pkgs.nodejs_20
-
-    # For docs
+    pkgs.firefox-esr
+    pkgs.mullvad-browser
+    
     pkgs.texliveFull
     pkgs.pandoc
-    pkgs.vscode-fhs
 
     # System Utils
     pkgs.powershell
     pkgs.openconnect
     pkgs.wget
-    pkgs.librsvg
     pkgs.moreutils
     pkgs.fd
     pkgs.ripgrep
@@ -27,10 +24,12 @@
     pkgs.dos2unix
     pkgs.jq
     pkgs.git
+    pkgs.exiftool
+    pkgs.jdupes
+    pkgs.rsync
+    pkgs.bandwhich
     pkgs.quickemu
-    pkgs.firefox-esr
-    pkgs.mullvad-browser
-
+    
     # X11 utils
     pkgs.xclip
     pkgs.unzip
