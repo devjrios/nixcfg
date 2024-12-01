@@ -37,12 +37,7 @@ in
     enable = true;
     enableExtensionUpdateCheck = false;
     enableUpdateCheck = false;
-    package = pkgs.vscodium;
     mutableExtensionsDir = true;
-    extensions = [
-      pkgs.vscode-extensions.editorconfig.editorconfig
-      pkgs.vscode-extensions.dracula-theme.theme-dracula
-    ];
     userSettings = {
       "workbench.startupEditor" = "none";
       "workbench.colorTheme" = "Dracula Theme";
