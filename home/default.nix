@@ -71,74 +71,74 @@ in
       pkgs.vscode-extensions.esbenp.prettier-vscode
     ];
     userSettings = {
-      "workbench.startupEditor" = "none",
-      "workbench.colorTheme" = "Dracula Theme",
-      "workbench.editor.enablePreview" = false,
+      "workbench.startupEditor" = "none";
+      "workbench.colorTheme" = "Dracula Theme";
+      "workbench.editor.enablePreview" = false;
 
-      "terminal.integrated.scrollback" = 50000,
-      "git.confirmSync" = false,
+      "terminal.integrated.scrollback" = 50000;
+      "git.confirmSync" = false;
 
-      "security.workspace.trust.untrustedFiles" = "open",
-      "security.workspace.trust.enabled" = false,
-      "security.workspace.trust.startupPrompt" = "never",
+      "security.workspace.trust.untrustedFiles" = "open";
+      "security.workspace.trust.enabled" = false;
+      "security.workspace.trust.startupPrompt" = "never";
 
-      "java.debug.settings.hotCodeReplace" = "auto",
-      "java.jdt.ls.vmargs" = "--add-opens=java.base/java.io=ALL-UNNAMED -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:disable",
-      "java.help.showReleaseNotes" = false,
-      "java.debug.settings.forceBuildBeforeLaunch" = false,
-      "java.server.launchMode" = "Standard",
-      "java.showBuildStatusOnStart.enabled" = "off",
-      "java.import.maven.offline.enabled" = true,
-      "java.maven.downloadSources" = false,
-      "java.eclipse.downloadSources" = false,
-      "java.progressReports.enabled" = false,
+      "java.debug.settings.hotCodeReplace" = "auto";
+      "java.jdt.ls.vmargs" = "--add-opens=java.base/java.io=ALL-UNNAMED -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -Xlog:disable";
+      "java.help.showReleaseNotes" = false;
+      "java.debug.settings.forceBuildBeforeLaunch" = false;
+      "java.server.launchMode" = "Standard";
+      "java.showBuildStatusOnStart.enabled" = "off";
+      "java.import.maven.offline.enabled" = true;
+      "java.maven.downloadSources" = false;
+      "java.eclipse.downloadSources" = false;
+      "java.progressReports.enabled" = false;
       "java.configuration.runtimes" = [
         {
-          "name" = "JavaSE-1.8",
-          "path" = "${pkgs.jdk8}/lib/openjdk/jre/",
-          "default" = true
+          "name" = "JavaSE-1.8";
+          "path" = "${pkgs.jdk8}/lib/openjdk/jre/";
+          "default" = true;
         },
         {
-          "name" = "JavaSE-17",
-          "path" = "${pkgs.jdk17}/lib/openjdk/"
+          "name" = "JavaSE-17";
+          "path" = "${pkgs.jdk17}/lib/openjdk/";
         },
         {
-          "name" = "JavaSE-21",
-          "path" = "${pkgs.jdk21_headless}/lib/openjdk/"
+          "name" = "JavaSE-21";
+          "path" = "${pkgs.jdk21_headless}/lib/openjdk/";
         }
       ],
       "rsp-ui.enableStartServerOnActivation" = [
         {
-          "id" = "redhat.vscode-community-server-connector",
-          "name" = "Community Server Connector",
-          "startOnActivation" = true
+          "id" = "redhat.vscode-community-server-connector";
+          "name" = "Community Server Connector";
+          "startOnActivation" = true;
         },
         {
-          "id" = "redhat.vscode-server-connector",
-          "name" = "Red Hat Server Connector",
-          "startOnActivation" = false
+          "id" = "redhat.vscode-server-connector";
+          "name" = "Red Hat Server Connector";
+          "startOnActivation" = false;
         }
-      ],
-      "rsp-ui.rsp.java.home" = "${pkgs.jdk21_headless}/lib/openjdk/",
-      "maven.executable.options" = "-Dmaven.javadoc.skip=true -Dmaven.test.skip=true",
-      "redhat.telemetry.enabled" = false,
+      ];
+      "rsp-ui.rsp.java.home" = "${pkgs.jdk21_headless}/lib/openjdk/";
+      "maven.executable.options" = "-Dmaven.javadoc.skip=true -Dmaven.test.skip=true";
+      "redhat.telemetry.enabled" = false;
 
-      "editor.fontFamily" = "'Comic Code Ligatures Medium'",
-      "editor.fontLigatures" = true,
-      "editor.minimap.enabled" = false,
-      "editor.wordBasedSuggestions" = "off",
-      "editor.rulers" = [ 79, 120 ],
+      "editor.fontFamily" = "'Comic Code Ligatures Medium'";
+      "editor.fontLigatures" = true;
+      "editor.minimap.enabled" = false;
+      "editor.wordBasedSuggestions" = "off";
+      "editor.rulers" = [ 79, 120 ];
 
-      "diffEditor.ignoreTrimWhitespace" = true,
-      "diffEditor.hideUnchangedRegions.enabled" = true,
-      
-      "task.allowAutomaticTasks" = "on",
-      "triggerTaskOnSave.on" = false,
-      
-      "window.zoomLevel" = -1,
-      "update.mode" = "none",
-      "update.showReleaseNotes" = false,
-      "extensions.autoUpdate" = false
+      "diffEditor.ignoreTrimWhitespace" = true;
+      "diffEditor.hideUnchangedRegions.enabled" = true;
+
+      "task.allowAutomaticTasks" = "on";
+      "triggerTaskOnSave.on" = false;
+
+      "window.zoomLevel" = -1;
+      "update.mode" = "none";
+      "update.showReleaseNotes" = false;
+      "extensions.autoUpdate" = false;
     };
   };
 
