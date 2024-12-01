@@ -42,17 +42,17 @@
   services.desktopManager.plasma6 = {
     enable = true;
     enableQt5Integration = false;
-    excludePackages = with pkgs.kdePackages; [
-      plasma-browser-integration
-      konsole
-      elisa
-      kate
-      khelpcenter
-      xwaylandvideobridge
-    ];
   };
   environment.systemPackages = [
     pkgs.kdePackages.kdenlive
+  ];
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    plasma-browser-integration
+    konsole
+    elisa
+    kate
+    khelpcenter
+    xwaylandvideobridge
   ];
   services.xserver.displayManager.sessionCommands = ''
     sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap - <<'EOF'
