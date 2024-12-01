@@ -97,22 +97,22 @@ in
           "name" = "JavaSE-1.8";
           "path" = "${pkgs.jdk8}/lib/openjdk/jre/";
           "default" = true;
-        },
+        }
         {
           "name" = "JavaSE-17";
           "path" = "${pkgs.jdk17}/lib/openjdk/";
-        },
+        }
         {
           "name" = "JavaSE-21";
           "path" = "${pkgs.jdk21_headless}/lib/openjdk/";
         }
-      ],
+      ];
       "rsp-ui.enableStartServerOnActivation" = [
         {
           "id" = "redhat.vscode-community-server-connector";
           "name" = "Community Server Connector";
           "startOnActivation" = true;
-        },
+        }
         {
           "id" = "redhat.vscode-server-connector";
           "name" = "Red Hat Server Connector";
@@ -127,7 +127,7 @@ in
       "editor.fontLigatures" = true;
       "editor.minimap.enabled" = false;
       "editor.wordBasedSuggestions" = "off";
-      "editor.rulers" = [ 79, 120 ];
+      "editor.rulers" = [ 79 120 ];
 
       "diffEditor.ignoreTrimWhitespace" = true;
       "diffEditor.hideUnchangedRegions.enabled" = true;
