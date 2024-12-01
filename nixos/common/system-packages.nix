@@ -38,18 +38,11 @@
     # Extra tools
     pkgs.libreoffice-qt
     pkgs.vlc
+    pkgs.audacity
 
     pkgs.subversionClient
     pkgs.drawio
-
-    (pkgs.writeShellScriptBin "make" ''
-    args="$@"
-    nix-shell --impure -p stdenv --command "make $args"
-    '')
-    (pkgs.writeShellScriptBin "gcc" ''
-    args="$@"
-    nix-shell --impure -p stdenv --command "gcc $args"
-    '')
+    
     (pkgs.writeShellScriptBin "powershell" ''
     pwsh "$@"
     '')
