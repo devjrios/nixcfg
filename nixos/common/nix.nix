@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
   nixpkgs.config.allowUnfree = true;
 
@@ -10,15 +9,15 @@
     warn-dirty = false;
     fallback = true;
 
-    substituters = lib.mkForce [ "https://nix-community.cachix.org" "https://cache.thalheim.io" ];
-    trusted-substituters = lib.mkForce [ "https://nix-community.cachix.org" "https://cache.thalheim.io" ];
-    trusted-public-keys = lib.mkForce [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" "cache.thalheim.io-1:R7msbosLEZKrxk/lKxf9BTjOOH7Ax3H0Qj0/6wiHOgc=" ];
+    substituters = [ "https://nix-community.cachix.org" "https://cache.thalheim.io" ];
+    trusted-substituters = [ "https://nix-community.cachix.org" "https://cache.thalheim.io" ];
+    trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" "cache.thalheim.io-1:R7msbosLEZKrxk/lKxf9BTjOOH7Ax3H0Qj0/6wiHOgc=" ];
 
     trusted-users = [ "@wheel" "root" "jrios" ];
     builders-use-substitutes = true;
 
-    http-connections = 10;
-    max-substitution-jobs = 10;
+    http-connections = 25;
+    max-substitution-jobs = 16;
     connect-timeout = 5;
     max-jobs = "auto";
     log-lines = 25;
