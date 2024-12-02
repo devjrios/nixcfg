@@ -17,8 +17,8 @@
     trusted-users = [ "@wheel" "root" "jrios" ];
     builders-use-substitutes = true;
 
-    http-connections = 128;
-    max-substitution-jobs = 128;
+    http-connections = 10;
+    max-substitution-jobs = 10;
     connect-timeout = 5;
     max-jobs = "auto";
     log-lines = 25;
