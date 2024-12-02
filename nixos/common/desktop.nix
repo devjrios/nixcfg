@@ -73,6 +73,9 @@
       gyre-fonts
       noto-fonts-color-emoji
       # (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "VictorMono" ]; })
+      # nerd-fonts.symbols-only
+      # nerd-fonts.victor-mono
+      # nerd-fonts.ubuntu-mono
     ];
     fontconfig = {
       localConf = ''
