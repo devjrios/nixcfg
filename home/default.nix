@@ -238,6 +238,16 @@ in
         ''${EDITOR:-nvim} flake.nix
       }
 
+      mk_devshell() {
+        if [ ! -e flake.nix ]; then
+          nix flake new -t "github:numtide/devshell" .
+        elif [ ! -e .envrc ]; then
+          echo "use flake" > .envrc
+          direnv allow
+        fi
+        ''${EDITOR:-nvim} flake.nix
+      }
+
       compile_java() {
         skipTests="$1"
         profile="$2"
