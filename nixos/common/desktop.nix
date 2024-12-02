@@ -72,7 +72,7 @@
     packages = with pkgs; [
       gyre-fonts
       noto-fonts-color-emoji
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "VictorMono" ]; })
+      # (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "VictorMono" ]; })
     ];
     fontconfig = {
       localConf = ''
