@@ -46,13 +46,13 @@
   environment.systemPackages = [
     pkgs.kdePackages.kdenlive
   ];
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    plasma-browser-integration
-    konsole
-    elisa
-    kate
-    khelpcenter
-    xwaylandvideobridge
+  environment.plasma6.excludePackages = [
+    pkgs.kdePackages.plasma-browser-integration
+    pkgs.kdePackages.konsole
+    pkgs.kdePackages.elisa
+    pkgs.kdePackages.kate
+    pkgs.kdePackages.khelpcenter
+    pkgs.kdePackages.xwaylandvideobridge
   ];
   services.xserver.displayManager.sessionCommands = ''
     sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap - <<'EOF'
