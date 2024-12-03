@@ -9,17 +9,25 @@
     };
     settings = {
       General = {
-        Enable = "Source,Sink,Media,Socket";
+        MultiProfile = "multiple";
+        TemporaryTimeout = "30";
+        SecureConnections = "off";
         FastConnectable = true;
         JustWorksRepairing = "always";
         Class = "0x000100";
         Experimental = true;
-        KernelExperimental = true;
-        Privacy = "device";
+        Testing = true;
+        # KernelExperimental = true;
+        Privacy = "off";
       };
       GATT = {
-        ReconnectIntervals = "1,1,2,3,5,8,13,21,34,55";
+        Cache = "no";
+      };
+      Policy = {
+        ReconnectAttempts = "5";
+        ReconnectIntervals = "4,8,16,32,64";
         AutoEnable = true;
+        ResumeDelay = "4";
       };
     };
   };
