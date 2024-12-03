@@ -7,8 +7,14 @@
     package = pkgs.bluez.override {
       enableExperimental = true;
     };
+    # Note to self: For the problem I have,
+    # I should adjust ControllerMode, SessionMode and StreamMode
     settings = {
       General = {
+        # Restricts all controllers to the specified transport.
+        # Default value # is "dual", i.e. both BR/EDR and LE enabled (when supported by the HW).
+        # Possible values: "dual", "bredr", "le"
+        ControllerMode = "bredr";
         MultiProfile = "multiple";
         TemporaryTimeout = "30";
         SecureConnections = "off";
@@ -16,14 +22,26 @@
         JustWorksRepairing = "always";
         Class = "0x010200";
         Experimental = true;
-        Testing = true;
-        # KernelExperimental = true;
+        # Testing = true;
         Privacy = "off";
       };
       GATT = {
         Cache = "no";
       };
+      AVDTP = {
+        # AVDTP L2CAP Signalling Channel Mode.
+        # Possible values:
+        # basic: Use L2CAP Basic Mode
+        # ertm: Use L2CAP Enhanced Retransmission Mode
+        SessionMode = "basic";
+        # AVDTP L2CAP Transport Channel Mode.
+        # Possible values:
+        # basic: Use L2CAP Basic Mode
+        # streaming: Use L2CAP Streaming Mode
+        StreamMode = "streaming";
+      };
       Policy = {
+        ReconnectUUIDs = "0000110e-0000-1000-8000-00805f9b34fb,03b80e5a-ede8-4b33-a751-6ce34ec4c700,00001843-0000-1000-8000-00805f9b34fb,00001845-0000-1000-8000-00805f9b34fb,00001200-0000-1000-8000-00805f9b34fb,00001104-0000-1000-8000-00805f9b34fb,00001844-0000-1000-8000-00805f9b34fb,00005005-0000-1000-8000-0002ee000001,0000184d-0000-1000-8000-00805f9b34fb,00001112-0000-1000-8000-00805f9b34fb,0000110c-0000-1000-8000-00805f9b34fb,00001801-0000-1000-8000-00805f9b34fb,00001108-0000-1000-8000-00805f9b34fb,0000180a-0000-1000-8000-00805f9b34fb,0000110b-0000-1000-8000-00805f9b34fb,00001800-0000-1000-8000-00805f9b34fb,0000111f-0000-1000-8000-00805f9b34fb,0000110a-0000-1000-8000-00805f9b34fb,0000184f-0000-1000-8000-00805f9b34fb,0000111e-0000-1000-8000-00805f9b34fb";
         ReconnectAttempts = "5";
         ReconnectIntervals = "4,8,16,32,64";
         AutoEnable = true;
@@ -82,6 +100,7 @@
 
   environment.variables = {
     KWIN_COMPOSE = "N";
+    WIREPLUMBER_DEBUG = "spa.bluez5*:4,pw.context:3";
     # KWIN_DRM_DEVICES="/dev/dri/card1";
   };
 
