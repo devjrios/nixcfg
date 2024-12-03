@@ -92,7 +92,7 @@
 
   environment.variables = {
     KWIN_COMPOSE = "N";
-    WIREPLUMBER_DEBUG = "spa.bluez5*:4,pw.context:3";
+    # WIREPLUMBER_DEBUG = "spa.bluez5*:4,pw.context:3";
     # KWIN_DRM_DEVICES="/dev/dri/card1";
   };
 
