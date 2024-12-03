@@ -1,10 +1,20 @@
 { pkgs, ... }:
 {
-  hardware.bluetooth.enable = true;
-  hardware.bluetooth.powerOnBoot = true;
-  hardware.bluetooth.settings = {
-    General = {
-      Enable = "Source,Sink,Media,Socket";
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    package = pkgs.bluez.override {
+      enableExperimental = true;
+    };
+    hsphfpd.enable = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+        FastConnectable = true;
+        Experimental = true;
+        KernelExperimental = true;
+      };
     };
   };
 
@@ -31,7 +41,8 @@
           "bluez5.enable-sbc-xq" = true;
           "bluez5.enable-msbc" = true;
           "bluez5.enable-hw-volume" = true;
-          "bluez5.hfphsp-backend" = "native";
+          # used to be native
+          "bluez5.hfphsp-backend" = "hsphfpd";
           "bluez5.roles" = [
             "a2dp_sink"
             "a2dp_source"
