@@ -11,8 +11,15 @@
       General = {
         Enable = "Source,Sink,Media,Socket";
         FastConnectable = true;
+        JustWorksRepairing = "always";
+        Class = "0x000100";
         Experimental = true;
         KernelExperimental = true;
+        Privacy = "device";
+      };
+      GATT = {
+        ReconnectIntervals = "1,1,2,3,5,8,13,21,34,55";
+        AutoEnable = true;
       };
     };
   };
