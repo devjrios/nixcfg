@@ -40,8 +40,7 @@
           "bluez5.enable-sbc-xq" = true;
           "bluez5.enable-msbc" = true;
           "bluez5.enable-hw-volume" = true;
-          # used to be native
-          "bluez5.hfphsp-backend" = "hsphfpd";
+          "bluez5.hfphsp-backend" = "native";
           "bluez5.roles" = [
             "a2dp_sink"
             "a2dp_source"
