@@ -14,7 +14,7 @@
         SecureConnections = "off";
         FastConnectable = true;
         JustWorksRepairing = "always";
-        Class = "0x000100";
+        Class = "0x010200";
         Experimental = true;
         Testing = true;
         # KernelExperimental = true;
