@@ -7,7 +7,6 @@
     package = pkgs.bluez.override {
       enableExperimental = true;
     };
-    hsphfpd.enable = true;
     settings = {
       General = {
         Enable = "Source,Sink,Media,Socket";
