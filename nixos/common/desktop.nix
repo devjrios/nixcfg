@@ -20,7 +20,7 @@
         SecureConnections = "off";
         FastConnectable = true;
         JustWorksRepairing = "always";
-        Class = "0x010200";
+        Class = "0x010100";
         Experimental = true;
         # Testing = true;
         Privacy = "off";
