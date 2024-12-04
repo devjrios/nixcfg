@@ -18,7 +18,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./nixos
-          chaotic.nixosModules.mesa-git
+          chaotic.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
