@@ -81,6 +81,7 @@
     pkgs.kdePackages.elisa
     pkgs.kdePackages.kate
     pkgs.kdePackages.khelpcenter
+    pkgs.kdePackages.krdp
     pkgs.kdePackages.xwaylandvideobridge
   ];
   services.xserver.displayManager.sessionCommands = ''
