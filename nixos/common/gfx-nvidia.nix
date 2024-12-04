@@ -4,6 +4,8 @@
 
     services.xserver.videoDrivers = [ "nvidia" ];
 
+    chaotic.mesa-git.enable = true;
+
     hardware.graphics.enable = true;
 
     hardware.nvidia = {
