@@ -4,9 +4,6 @@
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    package = pkgs.bluez.override {
-      enableExperimental = true;
-    };
     # Note to self: For the problem I have,
     # I should adjust ControllerMode, SessionMode and StreamMode
     settings = {
@@ -14,14 +11,13 @@
         # Restricts all controllers to the specified transport.
         # Default value # is "dual", i.e. both BR/EDR and LE enabled (when supported by the HW).
         # Possible values: "dual", "bredr", "le"
-        ControllerMode = "bredr";
+        ControllerMode = "le";
         MultiProfile = "multiple";
         TemporaryTimeout = "30";
         SecureConnections = "off";
         FastConnectable = true;
         JustWorksRepairing = "always";
         Class = "0x010100";
-        Experimental = true;
         Privacy = "off";
       };
       GATT = {
@@ -63,19 +59,9 @@
       "10-bluez" = {
         "monitor.bluez.properties" = {
           "bluez5.enable-sbc-xq" = true;
-          "bluez5.enable-msbc" = true;
+          "bluez5.enable-msbc" = false;
           "bluez5.enable-hw-volume" = true;
           "bluez5.hfphsp-backend" = "native";
-          "bluez5.roles" = [
-            "a2dp_sink"
-            "a2dp_source"
-            "bap_sink"
-            "bap_source"
-            "hsp_hs"
-            "hsp_ag"
-            "hfp_hf"
-            "hfp_ag"
-          ];
         };
       };
 
