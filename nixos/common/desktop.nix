@@ -45,7 +45,7 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     extraConfig.pipewire-pulse = {
-      "50-combine-sink.conf" = {
+      "50-combine-sink" = {
         "pulse.cmd" = [
           {
             cmd = "load-module";
