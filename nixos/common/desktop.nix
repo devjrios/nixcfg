@@ -11,7 +11,7 @@
         # Restricts all controllers to the specified transport.
         # Default value # is "dual", i.e. both BR/EDR and LE enabled (when supported by the HW).
         # Possible values: "dual", "bredr", "le"
-        ControllerMode = "le";
+        ControllerMode = "bredr";
         MultiProfile = "multiple";
         TemporaryTimeout = "30";
         SecureConnections = "off";
