@@ -8,13 +8,17 @@
     # rootless = { enable = true; setSocketVariable = true; daemon.settings = { experimental = true; }; };
     # };
 
-    # NixOS wiki claims Podman  it's not well supported for ZFS, let's test it
+    # NixOS wiki claims Podman is not well supported for ZFS, let's test it
     podman = { enable = true; defaultNetwork.settings = { dns_enabled = true; }; };
     containers = {
       enable = true;
       storage.settings = { storage = { driver = "zfs"; }; };
     };
   };
+
+  systemd.tmpfiles.rules = [
+    "d /run/containers/storage 0776 root root - -"
+  ];
 
   services.postgresql = {
     extensions = [ pkgs.postgresql15Packages.postgis ];
