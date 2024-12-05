@@ -21,6 +21,7 @@ in
     pkgs.keepassxc
     pkgs.spotify
     pkgs.flatpak
+    pkgs.distrobox
   ];
 
   services.mpris-proxy.enable = true;

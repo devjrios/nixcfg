@@ -1,12 +1,20 @@
 { pkgs, ... }:
 {
 
-  # virtualisation.docker.rootless = {
-  # enable = true;
-  # setSocketVariable = true;
-  # };
+  virtualisation = {
+    # docker = {
+    # storageDriver = "zfs"; enable = true;
+    # daemon.settings = { experimental = true; };
+    # rootless = { enable = true; setSocketVariable = true; daemon.settings = { experimental = true; }; };
+    # };
 
-  virtualisation.docker.enable = true;
+    # NixOS wiki claims Podman  it's not well supported for ZFS, let's test it
+    podman = { enable = true; defaultNetwork.settings = { dns_enabled = true; }; };
+    containers = {
+      enable = true;
+      storage.settings = { storage = { driver = "zfs"; }; };
+    };
+  };
 
   services.postgresql = {
     extensions = [ pkgs.postgresql15Packages.postgis ];

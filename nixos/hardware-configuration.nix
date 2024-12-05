@@ -38,6 +38,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/var/lib/containers/storage" =
+    { device = "rpool/containers";
+      fsType = "zfs";
+    };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/56E1-8CE6";
       fsType = "vfat";
