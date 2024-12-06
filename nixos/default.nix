@@ -27,17 +27,7 @@
 
   services.mullvad-vpn = {
     enable = true;
-    package = pkgs.mullvad-vpn.overrideAttrs(previousAttrs: {
-      version = "202408";
-      name = "mullvad-vpn-202408";
-      src = pkgs.fetchFromGitHub {
-        owner = "mullvad";
-        repo = "mullvadvpn-app";
-        # release 2024.8 merge hash in main
-        rev = "40f2934bde775d3dbf17429abe0be26fd6e24997";
-        hash = "sha256-1t7utA/O6SU1+QncZnQac/oY5Hg4+H+5GOoDDhH4ce4=";
-      };
-    });
+    package = pkgs.mullvad-vpn;
   };
 
   programs.zsh.enable = true;
