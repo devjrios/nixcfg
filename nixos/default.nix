@@ -15,10 +15,20 @@
   };
 
   networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
-  networking.resolvconf.enable = true;
-  networking.resolvconf.dnsSingleRequest = true;
-  networking.networkmanager.wifi.powersave = false;
+  networking.networkmanager = {
+    enable = true;
+    wifi.powersave = false;
+  };
+
+  networking.resolvconf = {
+    enable = true;
+    dnsSingleRequest = true;
+  };
+
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
 
   programs.zsh.enable = true;
   services.fwupd.enable = true;
