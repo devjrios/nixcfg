@@ -28,7 +28,8 @@
   services.mullvad-vpn = {
     enable = true;
     package = pkgs.mullvad-vpn.overrideAttrs(previousAttrs: {
-      name = "mullvad-vpn-2024-08";
+      version = "202408";
+      name = "mullvad-vpn-202408";
       src = pkgs.fetchFromGitHub {
         owner = "mullvad";
         repo = "mullvadvpn-app";
