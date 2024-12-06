@@ -34,7 +34,7 @@
         repo = "mullvadvpn-app";
         # release 2024.8 merge hash in main
         rev = "40f2934bde775d3dbf17429abe0be26fd6e24997";
-        hash = pkgs.lib.fakeHash;
+        hash = "sha256-1t7utA/O6SU1+QncZnQac/oY5Hg4+H+5GOoDDhH4ce4=";
       };
     });
   };
