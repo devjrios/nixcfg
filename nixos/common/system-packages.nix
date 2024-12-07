@@ -15,23 +15,23 @@ include globals.local
 # The mullvad-browser can be downloaded from the official website
 # and installed manually or via the AUR for Arch Linux (derivatives).
 # The latter installs the browser under /opt/mullvad-browser, while
-# the former can be installed under ${HOME} just about anywhere.
-# If you decide to install it under ${HOME} this profile assumes to find
-# the browser files under ${HOME}/.local/share/mullvad-browser.
+# the former can be installed under ''${HOME} just about anywhere.
+# If you decide to install it under ''${HOME} this profile assumes to find
+# the browser files under ''${HOME}/.local/share/mullvad-browser.
 # When you divert from that location you will need to make the needed
 # path adjustments yourself in the below instructions.
 ####################################################
 
-# If you installed under ${HOME}, put the below line in your
+# If you installed under ''${HOME}, put the below line in your
 # mullvad-browser.local
 # Note: The relevant rule in /etc/apparmor.d/local/firejail-default will
 # need to be uncommented for the 'apparmor' option to work as expected.
-#ignore noexec ${HOME}
+#ignore noexec ''${HOME}
 
-noblacklist ${HOME}/.cache/mullvad/mullvadbrowser
-noblacklist ${HOME}/.config/mullvad-browser-flags.conf
-noblacklist ${HOME}/.local/share/mullvad-browser
-noblacklist ${HOME}/.mullvad/mullvadbrowser
+noblacklist ''${HOME}/.cache/mullvad/mullvadbrowser
+noblacklist ''${HOME}/.config/mullvad-browser-flags.conf
+noblacklist ''${HOME}/.local/share/mullvad-browser
+noblacklist ''${HOME}/.mullvad/mullvadbrowser
 
 # Allow python 3 (blacklisted by disable-interpreters.inc)
 include allow-python3.inc
@@ -48,15 +48,15 @@ include disable-proc.inc
 include disable-programs.inc
 include disable-xdg.inc
 
-mkdir ${HOME}/.cache/mullvad/mullvadbrowser
-mkdir ${HOME}/.local/share/mullvad-browser
-mkdir ${HOME}/.mullvad/mullvadbrowser
-mkfile ${HOME}/.config/mullvad-browser-flags.conf
-whitelist ${DOWNLOADS}
-whitelist ${HOME}/.cache/mullvad/mullvadbrowser
-whitelist ${HOME}/.config/mullvad-browser-flags.conf
-whitelist ${HOME}/.local/share/mullvad-browser
-whitelist ${HOME}/.mullvad/mullvadbrowser
+mkdir ''${HOME}/.cache/mullvad/mullvadbrowser
+mkdir ''${HOME}/.local/share/mullvad-browser
+mkdir ''${HOME}/.mullvad/mullvadbrowser
+mkfile ''${HOME}/.config/mullvad-browser-flags.conf
+whitelist ''${DOWNLOADS}
+whitelist ''${HOME}/.cache/mullvad/mullvadbrowser
+whitelist ''${HOME}/.config/mullvad-browser-flags.conf
+whitelist ''${HOME}/.local/share/mullvad-browser
+whitelist ''${HOME}/.mullvad/mullvadbrowser
 whitelist /opt/mullvad-browser
 include whitelist-common.inc
 include whitelist-run-common.inc
@@ -86,9 +86,9 @@ private-dev
 private-etc @tls-ca
 private-tmp
 
-blacklist ${PATH}/curl
-blacklist ${PATH}/wget
-blacklist ${PATH}/wget2
+blacklist ''${PATH}/curl
+blacklist ''${PATH}/wget
+blacklist ''${PATH}/wget2
 
 dbus-user filter
 dbus-user.own org.mozilla.mullvadbrowser.*
