@@ -8,13 +8,11 @@
         executable = "${lib.getBin pkgs.brave}/bin/brave";
         profile = "${pkgs.firejail}/etc/firejail/brave.profile";
         desktop = "${pkgs.brave}/share/applications/brave-browser.desktop";
-        extraArgs = [ "--net=wg0-mullvad" ];
       };
       mullvad-browser = {
         executable = "${lib.getBin pkgs.mullvad-browser}/bin/mullvad-browser";
         profile = "${pkgs.firejail}/etc/firejail/mullvad-browser.profile";
         desktop = "${pkgs.mullvad-browser}/share/applications/mullvad-browser.desktop";
-        extraArgs = [ "--net=wg0-mullvad" ];
       };
       okular = {
         executable = "${lib.getBin pkgs.kdePackages.okular}/bin/okular";
@@ -32,7 +30,6 @@
         executable = "${lib.getBin pkgs.qbittorrent}/bin/qbittorrent";
         profile = "${pkgs.firejail}/etc/firejail/qbittorrent.profile";
         desktop = "${pkgs.qbittorrent}/share/applications/org.qbittorrent.qBittorrent.desktop";
-        extraArgs = [ "--net=wg0-mullvad" ];
       };
     };
   };
