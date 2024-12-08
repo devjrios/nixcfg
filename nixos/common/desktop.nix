@@ -67,7 +67,10 @@
 
   services.xserver.enable = true;
   # programs.xwayland.enable = true;
-  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    settings.General.DisplayServer = "x11-user";
+  };
   services.desktopManager.plasma6 = {
     enable = true;
     enableQt5Integration = false;
