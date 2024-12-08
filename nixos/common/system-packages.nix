@@ -2,6 +2,14 @@
 {
 
   environment.etc = {
+    "firejail/qbittorrent.local".text = ''
+dbus-user filter
+dbus-user.talk org.kde.knotifications
+dbus-user.talk org.kde.StatusNotifierWatcher
+dbus-user.talk org.freedesktop.Notifications
+dbus-user.talk org.freedesktop.StatusNotifierItem
+ignore dbus-user none
+    '';
     "firejail/mullvad-browser.profile".text = ''
 # Firejail profile for mullvad-browser
 # Description: Privacy-focused web browser developed in a collaboration between Mullvad VPN and the Tor Project
