@@ -26,7 +26,7 @@ in
 
   services.mpris-proxy.enable = true;
 
-  programs.zathura.enable = {
+  programs.zathura = {
     enable = true;
     options = {
       ###########
