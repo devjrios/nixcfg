@@ -1,13 +1,15 @@
-{ pkgs, config, unstable, ... }:
-let
-  gdk = pkgs.google-cloud-sdk.withExtraComponents( with pkgs.google-cloud-sdk.components; [
+{
+  pkgs,
+  config,
+  unstable,
+  ...
+}: let
+  gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
     gke-gcloud-auth-plugin
     kubectl
     cloud_sql_proxy
   ]);
-in
-{
-
+in {
   fonts.fontconfig.enable = true;
 
   home.packages = [
@@ -191,7 +193,7 @@ in
       "editor.fontLigatures" = true;
       "editor.minimap.enabled" = false;
       "editor.wordBasedSuggestions" = "off";
-      "editor.rulers" = [ 79 120 ];
+      "editor.rulers" = [79 120];
 
       "diffEditor.ignoreTrimWhitespace" = true;
       "diffEditor.hideUnchangedRegions.enabled" = true;
@@ -210,7 +212,7 @@ in
     enable = true;
     delta.enable = true;
     extraConfig = {
-      safe.directory = [ "/usr/local/var/nixcfg" ];
+      safe.directory = ["/usr/local/var/nixcfg"];
       core = {
         autocrlf = "input";
         whitespace = "indent-with-non-tab,tabwidth=4";
@@ -269,8 +271,8 @@ in
         sslVerify = false;
       };
       credential.helper = "${
-          pkgs.git.override { withLibsecret = true; }
-        }/bin/git-credential-libsecret";
+        pkgs.git.override {withLibsecret = true;}
+      }/bin/git-credential-libsecret";
       merge = {
         conflictStyle = "diff3";
       };
@@ -300,10 +302,13 @@ in
 
   programs.zsh = {
     enable = true;
-    shellAliases = { lat = "ls -lat"; lg = "lazygit"; };
+    shellAliases = {
+      lat = "ls -lat";
+      lg = "lazygit";
+    };
     oh-my-zsh = {
       enable = true;
-      plugins = [ "git" "colored-man-pages" "history" "jsontools" "copypath" ];
+      plugins = ["git" "colored-man-pages" "history" "jsontools" "copypath"];
     };
     syntaxHighlighting.enable = true;
     autosuggestion.enable = true;
@@ -495,7 +500,7 @@ in
       };
       terminal = {
         shell = {
-          args = [ "-l" ];
+          args = ["-l"];
           program = "${pkgs.tmux}/bin/tmux";
         };
       };

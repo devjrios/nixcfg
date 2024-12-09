@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -101,33 +99,33 @@
     packages = with pkgs; [
       gyre-fonts
       noto-fonts-color-emoji
-      (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" "VictorMono" ]; })
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly" "VictorMono"];})
       # nerd-fonts.symbols-only
       # nerd-fonts.victor-mono
       # nerd-fonts.ubuntu-mono
     ];
     fontconfig = {
       localConf = ''
-      <?xml version="1.0"?>
-      <fontconfig>
-        <alias>
-          <family>Glorious Monospaced Shell</family>
-          <prefer>
-            <family>Comic Code</family>
-            <family>Comic Code Ligatures</family>
-            <family>Symbols Nerd Font Mono</family>
-            <family>Noto Color Emoji</family>
-          </prefer>
-        </alias>
-        <match target="pattern">
-          <test qual="any" name="family">
-            <string>NewCenturySchlbk</string>
-          </test>
-          <edit name="family" mode="assign" binding="same">
-            <string>TeX Gyre Schola</string>
-          </edit>
-        </match>
-      </fontconfig>
+        <?xml version="1.0"?>
+        <fontconfig>
+          <alias>
+            <family>Glorious Monospaced Shell</family>
+            <prefer>
+              <family>Comic Code</family>
+              <family>Comic Code Ligatures</family>
+              <family>Symbols Nerd Font Mono</family>
+              <family>Noto Color Emoji</family>
+            </prefer>
+          </alias>
+          <match target="pattern">
+            <test qual="any" name="family">
+              <string>NewCenturySchlbk</string>
+            </test>
+            <edit name="family" mode="assign" binding="same">
+              <string>TeX Gyre Schola</string>
+            </edit>
+          </match>
+        </fontconfig>
       '';
     };
   };
@@ -136,10 +134,9 @@
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
-    XDG_DATA_DIRS = [ "${XDG_DATA_HOME}/flatpak/exports/share" ];
+    XDG_DATA_DIRS = ["${XDG_DATA_HOME}/flatpak/exports/share"];
     XDG_STATE_HOME = "$HOME/.local/state";
     XDG_BIN_HOME = "$HOME/.local/bin";
-    PATH = [ "${XDG_BIN_HOME}" ];
+    PATH = ["${XDG_BIN_HOME}"];
   };
-
 }

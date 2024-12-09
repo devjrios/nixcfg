@@ -1,13 +1,15 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   config = {
-
-    services.xserver.videoDrivers = [ "nvidia" ];
+    services.xserver.videoDrivers = ["nvidia"];
 
     hardware.graphics.enable = true;
 
     hardware.nvidia = {
-
       package = config.boot.kernelPackages.nvidiaPackages.production;
 
       open = false;
@@ -26,6 +28,5 @@
 
     # This is for docker containers
     hardware.nvidia-container-toolkit.enable = true;
-
   };
 }

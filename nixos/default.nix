@@ -1,17 +1,18 @@
-{ config, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./common
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./common
+    ./hardware-configuration.nix
+  ];
 
   users.users.jrios = {
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Juan Rios";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   networking.hostName = "nixos";

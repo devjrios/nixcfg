@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-{
-
+{pkgs, ...}: {
   virtualisation = {
     # docker = {
     # storageDriver = "zfs"; enable = true;
@@ -9,10 +7,13 @@
     # };
 
     # NixOS wiki claims Podman is not well supported for ZFS, let's test it
-    podman = { enable = true; defaultNetwork.settings = { dns_enabled = true; }; };
+    podman = {
+      enable = true;
+      defaultNetwork.settings = {dns_enabled = true;};
+    };
     containers = {
       enable = true;
-      storage.settings = { storage = { driver = "zfs"; }; };
+      storage.settings = {storage = {driver = "zfs";};};
     };
   };
 
@@ -21,7 +22,7 @@
   ];
 
   services.postgresql = {
-    extensions = [ pkgs.postgresql15Packages.postgis ];
+    extensions = [pkgs.postgresql15Packages.postgis];
     enable = true;
     package = pkgs.postgresql_15;
     settings = {
@@ -59,5 +60,4 @@
       CREATE USER airflow_user WITH SUPERUSER ENCRYPTED PASSWORD '1234';
     '';
   };
-
 }

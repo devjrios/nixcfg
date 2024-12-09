@@ -8,8 +8,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.extraEntries = {
     "firmware_update.conf" = ''
-    title    Linux Firmware Updater
-    efi    /EFI/nixos/fwupdx64.efi
+      title    Linux Firmware Updater
+      efi    /EFI/nixos/fwupdx64.efi
     '';
   };
 }
