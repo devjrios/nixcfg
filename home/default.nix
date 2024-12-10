@@ -15,14 +15,10 @@ in {
 
   home.packages = [
     gdk
-    nvim.extend
-    {
-      wrapRc = false;
-      impureRtp = true;
-      defaultEditor = true;
+    (nvim.extend {
       viAlias = true;
       vimAlias = true;
-    }
+    })
     pkgs.jetbrains.clion
     pkgs.jetbrains.datagrip
     pkgs.jetbrains.webstorm

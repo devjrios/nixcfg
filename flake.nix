@@ -38,7 +38,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.jrios.imports = [./home];
-          home-manager.extraSpecialArgs = {inherit inputs nixvim-cfg;};
+          home-manager.extraSpecialArgs = {inherit inputs nixvim-cfg system;};
         }
         lix-module.nixosModules.default
       ];
