@@ -1,7 +1,7 @@
 {
   pkgs,
-  config,
-  unstable,
+  inputs,
+  system,
   ...
 }: let
   gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
@@ -286,6 +286,7 @@ in {
 
   programs.nixvim = {
     enable = true;
+    build.packageUnchecked = inputs.nixvim-cfg.packages.${system}.default;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;

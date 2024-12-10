@@ -376,15 +376,16 @@
         "nixvim": "nixvim"
       },
       "locked": {
-        "lastModified": 1733816061,
-        "narHash": "sha256-fELicil30mTLUrWTstaLLn3d4j/C45qmePpoBBBGnA0=",
+        "lastModified": 1733819669,
+        "narHash": "sha256-0pHzN2y+9X5JnqP7muccJV1MRETB9G07pEYHG+Xtx9M=",
         "owner": "devjrios",
         "repo": "nixvim-cfg",
-        "rev": "c2c906213958e509965657dc2f27a72e92511842",
+        "rev": "a7083fb6f59dde22118900f2cb803a43c412fd53",
         "type": "github"
       },
       "original": {
         "owner": "devjrios",
+        "ref": "nixos-24.11",
         "repo": "nixvim-cfg",
         "type": "github"
       }
