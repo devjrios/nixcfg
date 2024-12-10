@@ -284,7 +284,7 @@ in {
 
   programs.lazygit.enable = true;
 
-  programs.neovim = {
+  programs.nixvim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;

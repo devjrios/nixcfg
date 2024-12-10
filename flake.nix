@@ -5,6 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     home-manager.url = "github:nix-community/home-manager/release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixvim-cfg = {
+      url = "github:devjrios/nixvim-cfg";
+      inputs.nixvim.inputs.nixpkgs.follows = "nixpkgs";
+    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,6 +18,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixvim-cfg,
     lix-module,
     home-manager,
     ...
@@ -30,7 +35,7 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.jrios.imports = [./home];
+          home-manager.users.jrios.imports = [./home nixvim-cfg.flakeModules.homeManagerModules];
           home-manager.extraSpecialArgs = {inherit inputs;};
         }
         lix-module.nixosModules.default
