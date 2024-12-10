@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  nixvim-cfg,
   system,
   ...
 }: let
@@ -9,11 +9,20 @@
     kubectl
     cloud_sql_proxy
   ]);
+  nvim = nixvim-cfg.packages.${system}.default;
 in {
   fonts.fontconfig.enable = true;
 
   home.packages = [
     gdk
+    nvim.extend
+    {
+      wrapRc = false;
+      impureRtp = true;
+      defaultEditor = true;
+      viAlias = true;
+      vimAlias = true;
+    }
     pkgs.jetbrains.clion
     pkgs.jetbrains.datagrip
     pkgs.jetbrains.webstorm
@@ -283,14 +292,6 @@ in {
   };
 
   programs.lazygit.enable = true;
-
-  programs.nixvim = {
-    enable = true;
-    build.packageUnchecked = inputs.nixvim-cfg.packages.${system}.default;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
 
   programs.mr = {
     enable = true;

@@ -3,8 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nixvim-cfg = {
       url = "github:devjrios/nixvim-cfg/nixos-24.11";
       inputs.nixvim.inputs.nixpkgs.follows = "nixpkgs";
@@ -35,8 +37,8 @@
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.jrios.imports = [./home nixvim-cfg.flakeModules.homeManagerModules];
-          home-manager.extraSpecialArgs = {inherit inputs;};
+          home-manager.users.jrios.imports = [./home];
+          home-manager.extraSpecialArgs = {inherit inputs nixvim-cfg;};
         }
         lix-module.nixosModules.default
       ];
