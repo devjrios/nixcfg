@@ -1,9 +1,7 @@
 {pkgs, ...}: {
-  virtualisation = {
-    podman = {
-      enable = true;
-      defaultNetwork.settings = {dns_enabled = true;};
-    };
+  virtualisation.podman = {
+    enable = true;
+    defaultNetwork.settings = {dns_enabled = true;};
   };
 
   services.postgresql = {
