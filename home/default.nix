@@ -292,8 +292,8 @@ in {
   programs.mr = {
     enable = true;
     settings = {
-      ".config/nvim" = {
-        checkout = "rm -rf $HOME/.config/nvim;rm -rf $HOME/.local/share/nvim;rm -rf $HOME/.local/state/nvim;rm -rf $HOME/.cache/nvim;git clone -b nixos https://github.com/devjrios/neoconfig.git $HOME/.config/nvim";
+      ".config/nixvim-cfg" = {
+        checkout = "rm -rf $HOME/.config/nvim;rm -rf $HOME/.local/share/nvim;rm -rf $HOME/.local/state/nvim;rm -rf $HOME/.cache/nvim;git clone -b nixos-24.11 https://github.com/devjrios/nixvim-cfg.git $HOME/.config/nixvim-cfg";
       };
     };
   };
