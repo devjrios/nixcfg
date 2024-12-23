@@ -83,10 +83,13 @@
         hash = "sha256-85TB5fXVdqmb2Xyu9yrUlfyK/HOvnmpoW3v3Dn1w1F4=";
       };
       prePatch = null;
-      postPatch = ''
+      postPatch = let
+        bar_fixup = "sed -i 's@#!/bin/dash@#!$out/bin/dash@g' bin/bar_themes/*";
+      in ''
         sed -i "s@/usr/local@$out@g" config.mk
         sed -i "s@~/.config/chadwm/scripts/@$out/share/chadwm/@g" bin/bar.sh
         sed -i "s@~/.config/chadwm/scripts/@$out/share/chadwm/@g" bin/run.sh
+        ${bar_fixup}
         ${previousAttrs.postPatch or ""}
       '';
       buildInputs = previousAttrs.buildInputs;
@@ -97,6 +100,7 @@
             pkgs.dash
             pkgs.picom
             pkgs.feh
+            pkgs.light
             pkgs.rofi
             pkgs.maim
             pkgs.acpi
@@ -109,6 +113,7 @@
         cp -r bin/* $out/share/chadwm
         cp -r ${runtimeDeps} $out/bin
         cp -r ${lib.getBin pkgs.rofi}/bin/rofi-sensible-terminal $out/bin
+        cp -r ${lib.getBin pkgs.pulseaudio}/bin/pactl $out/bin
         ln -s $out/share/chadwm/run.sh $out/bin/dwm
       '';
       passthru.updateScript = builtins.gitUpdater {url = "git://github.com/siduck/chadwm";};
@@ -195,6 +200,7 @@
   };
 
   environment.sessionVariables = rec {
+    TERMINAL = "alacritty"; # used for rofi-sensible-terminal
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
