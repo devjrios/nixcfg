@@ -117,7 +117,7 @@
       patches = [
         (pkgs.fetchpatch {
           url = "https://github.com/MinePro120/ddwm/commit/22c0656aab491c1bd21951c773de21de7bdd3c48.patch?full_index=1";
-          hash = "";
+          hash = "sha256-/YYQhptTLI4+kMgTZ5Tb1uHsy2gCPh3v9Qfn6/hLr1A=";
           postFetch = ''
             sed -i "s@chadwm/config.def.h@config.def.h@g" $out
             sed -i "s@a/scripts/@a/bin/@g" $out
