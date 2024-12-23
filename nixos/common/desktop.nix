@@ -73,6 +73,8 @@
   services.xserver.windowManager.dwm.package =
     (pkgs.dwm.overrideAttrs (finalAttrs: previousAttrs: {
       pname = "chadwm";
+      version = "6.5";
+      name = lib.strings.concatStringsSep "-" [finalAttrs.pname finalAttrs.version];
       src = chadwm-src.override {
         postFetch = ''
           cd "$out" && find . -maxdepth 1 ! -name "chadwm" ! -name "scripts" ! -name "." -exec rm -rf {} + && \
@@ -91,11 +93,20 @@
       nativeBuildInputs = [(lib.getDev pkgs.imlib2)];
       postInstall = let
         runtimeDeps = lib.strings.concatStringsSep " " (
-          map (pkg: "${lib.getBin pkg}/bin/${lib.strings.getName pkg}") [pkgs.dash pkgs.picom pkgs.feh pkgs.rofi pkgs.acpi pkgs.eww pkgs.xorg.xsetroot]
+          map (pkg: "${lib.getBin pkg}/bin/${lib.strings.getName pkg}") [
+            pkgs.dash
+            pkgs.picom
+            pkgs.feh
+            pkgs.rofi
+            pkgs.acpi
+            pkgs.eww
+            pkgs.xorg.xsetroot
+          ]
         );
       in ''
         cp -r bin/* $out/bin
         cp -r ${runtimeDeps} $out/bin
+        ln -s $out/bin/chadwm $out/bin/dwm
       '';
       passthru.updateScript = builtins.gitUpdater {url = "git://github.com/siduck/chadwm";};
     }))
