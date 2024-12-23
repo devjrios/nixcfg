@@ -2,6 +2,7 @@
   pkgs,
   nixvim-cfg,
   system,
+  chadwm-src,
   ...
 }: let
   gdk = pkgs.google-cloud-sdk.withExtraComponents (with pkgs.google-cloud-sdk.components; [
@@ -13,6 +14,17 @@
 in {
   fonts.fontconfig.enable = true;
 
+  home.file = {
+    ".config/rofi" = {
+      source = "${chadwm-src}/rofi";
+    };
+    ".config/eww" = {
+      source = "${chadwm-src}/eww";
+    };
+    ".Xresources" = {
+      source = "${chadwm-src}/.Xresources";
+    };
+  };
   home.packages = [
     gdk
     (nvim.extend {

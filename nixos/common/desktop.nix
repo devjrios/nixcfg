@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  chadwm-src,
+  lib,
+  ...
+}: {
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -65,6 +70,49 @@
   services.xserver.enable = true;
   # programs.xwayland.enable = true;
   services.displayManager.sddm.enable = true;
+  services.xserver.windowManager.dwm.package =
+    (pkgs.dwm.overrideAttrs (finalAttrs: previousAttrs: {
+      pname = "chadwm";
+      src = chadwm-src.override {
+        postFetch = ''
+          cd "$out" && find . -maxdepth 1 ! -name "chadwm" ! -name "scripts" ! -name "." -exec rm -rf {} + && \
+          mv scripts bin && mv chadwm/* ./ && rm -rf chadwm
+        '';
+        hash = "sha256-85TB5fXVdqmb2Xyu9yrUlfyK/HOvnmpoW3v3Dn1w1F4=";
+      };
+      prePatch = null;
+      postPatch = ''
+        sed -i "s@/usr/local@$out@g" config.mk
+        sed -i "s@~/.config/chadwm/scripts/@$out/bin/@g" bin/bar.sh
+        sed -i "s@~/.config/chadwm/scripts/@$out/bin/@g" bin/run.sh
+        ${previousAttrs.postPatch or ""}
+      '';
+      buildInputs = previousAttrs.buildInputs;
+      nativeBuildInputs = [(lib.getDev pkgs.imlib2)];
+      postInstall = let
+        runtimeDeps = lib.strings.concatStringsSep " " (
+          map (pkg: "${lib.getBin pkg}/bin/${lib.strings.getName pkg}") [pkgs.dash pkgs.picom pkgs.feh pkgs.rofi pkgs.acpi pkgs.eww pkgs.xorg.xsetroot]
+        );
+      in ''
+        cp -r bin/* $out/bin
+        cp -r ${runtimeDeps} $out/bin
+      '';
+      passthru.updateScript = builtins.gitUpdater {url = "git://github.com/siduck/chadwm";};
+    }))
+    .override {
+      patches = [
+        (pkgs.fetchpatch {
+          url = "https://github.com/MinePro120/ddwm/commit/22c0656aab491c1bd21951c773de21de7bdd3c48.patch?full_index=1";
+          hash = "sha256-H0R0xfSPLSvWCY2Ze/HXno5RSPEtMCqDhTA5CJ41GnA=";
+          postFetch = ''
+            sed -i "s@chadwm/config.def.h@config.def.h@g" $out
+            sed -i "s@a/scripts/@a/bin/@g" $out
+            sed -i "s@b/scripts/@b/bin/@g" $out
+          '';
+        })
+      ];
+    };
+  services.xserver.windowManager.dwm.enable = true;
   services.desktopManager.plasma6 = {
     enable = true;
     enableQt5Integration = false;
@@ -99,7 +147,7 @@
     packages = with pkgs; [
       gyre-fonts
       noto-fonts-color-emoji
-      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly" "VictorMono"];})
+      (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly" "VictorMono" "JetBrainsMono"];})
       # nerd-fonts.symbols-only
       # nerd-fonts.victor-mono
       # nerd-fonts.ubuntu-mono
