@@ -85,8 +85,8 @@
       prePatch = null;
       postPatch = ''
         sed -i "s@/usr/local@$out@g" config.mk
-        sed -i "s@~/.config/chadwm/scripts/@$out/bin/@g" bin/bar.sh
-        sed -i "s@~/.config/chadwm/scripts/@$out/bin/@g" bin/run.sh
+        sed -i "s@~/.config/chadwm/scripts/@$out/share/chadwm/@g" bin/bar.sh
+        sed -i "s@~/.config/chadwm/scripts/@$out/share/chadwm/@g" bin/run.sh
         ${previousAttrs.postPatch or ""}
       '';
       buildInputs = previousAttrs.buildInputs;
@@ -98,15 +98,18 @@
             pkgs.picom
             pkgs.feh
             pkgs.rofi
+            pkgs.maim
             pkgs.acpi
             pkgs.eww
             pkgs.xorg.xsetroot
           ]
         );
       in ''
-        cp -r bin/* $out/bin
+        mkdir -p $out/share/chadwm
+        cp -r bin/* $out/share/chadwm
         cp -r ${runtimeDeps} $out/bin
-        ln -s $out/bin/chadwm $out/bin/dwm
+        cp -r ${lib.getBin pkgs.rofi}/bin/rofi-sensible-terminal $out/bin
+        ln -s $out/share/chadwm/run.sh $out/bin/dwm
       '';
       passthru.updateScript = builtins.gitUpdater {url = "git://github.com/siduck/chadwm";};
     }))
@@ -114,14 +117,16 @@
       patches = [
         (pkgs.fetchpatch {
           url = "https://github.com/MinePro120/ddwm/commit/22c0656aab491c1bd21951c773de21de7bdd3c48.patch?full_index=1";
-          hash = "sha256-H0R0xfSPLSvWCY2Ze/HXno5RSPEtMCqDhTA5CJ41GnA=";
+          hash = "";
           postFetch = ''
             sed -i "s@chadwm/config.def.h@config.def.h@g" $out
             sed -i "s@a/scripts/@a/bin/@g" $out
             sed -i "s@b/scripts/@b/bin/@g" $out
           '';
+          excludes = ["chadwm/config.def.h"];
         })
       ];
+      conf = ./chadwm-config.def.h;
     };
   services.xserver.windowManager.dwm.enable = true;
   services.desktopManager.plasma6 = {
