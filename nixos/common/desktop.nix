@@ -1,6 +1,5 @@
 {
   pkgs,
-  chadwm-src,
   lib,
   ...
 }: {
@@ -70,70 +69,6 @@
   services.xserver.enable = true;
   # programs.xwayland.enable = true;
   services.displayManager.sddm.enable = true;
-  services.xserver.windowManager.dwm.package =
-    (pkgs.dwm.overrideAttrs (finalAttrs: previousAttrs: {
-      pname = "chadwm";
-      version = "6.5";
-      name = lib.strings.concatStringsSep "-" [finalAttrs.pname finalAttrs.version];
-      src = chadwm-src.override {
-        postFetch = ''
-          cd "$out" && find . -maxdepth 1 ! -name "chadwm" ! -name "scripts" ! -name "." -exec rm -rf {} + && \
-          mv scripts bin && mv chadwm/* ./ && rm -rf chadwm
-        '';
-        hash = "sha256-85TB5fXVdqmb2Xyu9yrUlfyK/HOvnmpoW3v3Dn1w1F4=";
-      };
-      prePatch = null;
-      postPatch = let
-        bar_fixup = "sed -i 's@#!/bin/dash@#!$out/bin/dash@g' bin/bar_themes/*";
-      in ''
-        sed -i "s@/usr/local@$out@g" config.mk
-        sed -i "s@~/.config/chadwm/scripts/@$out/share/chadwm/@g" bin/bar.sh
-        sed -i "s@~/.config/chadwm/scripts/@$out/share/chadwm/@g" bin/run.sh
-        ${bar_fixup}
-        ${previousAttrs.postPatch or ""}
-      '';
-      buildInputs = previousAttrs.buildInputs;
-      nativeBuildInputs = [(lib.getDev pkgs.imlib2)];
-      postInstall = let
-        runtimeDeps = lib.strings.concatStringsSep " " (
-          map (pkg: "${lib.getBin pkg}/bin/${lib.strings.getName pkg}") [
-            pkgs.dash
-            pkgs.picom
-            pkgs.feh
-            pkgs.light
-            pkgs.rofi
-            pkgs.maim
-            pkgs.acpi
-            pkgs.eww
-            pkgs.xorg.xsetroot
-          ]
-        );
-      in ''
-        mkdir -p $out/share/chadwm
-        cp -r bin/* $out/share/chadwm
-        cp -r ${runtimeDeps} $out/bin
-        cp -r ${lib.getBin pkgs.rofi}/bin/rofi-sensible-terminal $out/bin
-        cp -r ${lib.getBin pkgs.pulseaudio}/bin/pactl $out/bin
-        ln -s $out/share/chadwm/run.sh $out/bin/dwm
-      '';
-      passthru.updateScript = builtins.gitUpdater {url = "git://github.com/siduck/chadwm";};
-    }))
-    .override {
-      patches = [
-        (pkgs.fetchpatch {
-          url = "https://github.com/MinePro120/ddwm/commit/22c0656aab491c1bd21951c773de21de7bdd3c48.patch?full_index=1";
-          hash = "sha256-/YYQhptTLI4+kMgTZ5Tb1uHsy2gCPh3v9Qfn6/hLr1A=";
-          postFetch = ''
-            sed -i "s@chadwm/config.def.h@config.def.h@g" $out
-            sed -i "s@a/scripts/@a/bin/@g" $out
-            sed -i "s@b/scripts/@b/bin/@g" $out
-          '';
-          excludes = ["chadwm/config.def.h"];
-        })
-      ];
-      conf = ./chadwm-config.def.h;
-    };
-  services.xserver.windowManager.dwm.enable = true;
   services.desktopManager.plasma6 = {
     enable = true;
     enableQt5Integration = false;
