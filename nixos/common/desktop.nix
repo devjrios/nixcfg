@@ -201,6 +201,7 @@
 
   environment.sessionVariables = rec {
     TERMINAL = "alacritty"; # used for rofi-sensible-terminal
+    EDITOR = "vim";
     XDG_CACHE_HOME = "$HOME/.cache";
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
