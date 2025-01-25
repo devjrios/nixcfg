@@ -67,7 +67,7 @@
   };
 
   services.xserver.enable = true;
-  # programs.xwayland.enable = true;
+  programs.xwayland.enable = lib.mkForce false;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6 = {
     enable = true;
@@ -84,6 +84,15 @@
     pkgs.kdePackages.khelpcenter
     pkgs.kdePackages.krdp
     pkgs.kdePackages.xwaylandvideobridge
+    pkgs.kdePackages.wayland
+    pkgs.kdePackages.qtwayland
+    pkgs.kdePackages.wayqt
+    pkgs.kdePackages.waylib
+    pkgs.kdePackages.wayland-protocols
+    pkgs.kdePackages.kwayland
+    pkgs.kdePackages.kwayland-integration
+    pkgs.kdePackages.plasma-wayland-protocols
+    pkgs.kdePackages.layer-shell-qt
   ];
   services.xserver.displayManager.sessionCommands = ''
     sleep 5 && ${pkgs.xorg.xmodmap}/bin/xmodmap - <<'EOF'
@@ -94,7 +103,7 @@
   services.displayManager.defaultSession = "plasmax11";
 
   # services.displayManager.sddm.wayland.compositor = "kwin";
-  # services.displayManager.sddm.wayland.enable = true;
+  services.displayManager.sddm.wayland.enable = false;
 
   services.printing.enable = true;
 

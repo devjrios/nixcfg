@@ -9,12 +9,6 @@
     };
     nixvim-cfg = {
       url = "github:devjrios/nixvim-cfg/nixos-24.11";
-      inputs.nixvim.inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixvim.inputs.home-manager.follows = "home-manager";
-    };
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.91.1-2.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -22,7 +16,6 @@
     self,
     nixpkgs,
     nixvim-cfg,
-    lix-module,
     home-manager,
     ...
   } @ inputs: let
@@ -41,7 +34,6 @@
           home-manager.users.jrios.imports = [./home];
           home-manager.extraSpecialArgs = {inherit inputs nixvim-cfg system;};
         }
-        lix-module.nixosModules.default
       ];
     };
   };

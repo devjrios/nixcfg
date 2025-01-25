@@ -27,10 +27,10 @@
     dnsSingleRequest = true;
   };
 
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
+  # services.mullvad-vpn = {
+  #   enable = true;
+  #   package = pkgs.mullvad-vpn;
+  # };
 
   programs.zsh.enable = true;
   services.fwupd.enable = true;
