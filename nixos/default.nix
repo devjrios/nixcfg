@@ -12,7 +12,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     description = "Juan Rios";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "wireshark"];
   };
 
   networking.hostName = "nixos";
@@ -32,6 +32,7 @@
   #   package = pkgs.mullvad-vpn;
   # };
 
+  programs.wireshark.enable = true;
   programs.zsh.enable = true;
   services.fwupd.enable = true;
   programs.nix-ld.enable = true;
