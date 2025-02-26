@@ -183,6 +183,7 @@
 
     pkgs.subversionClient
     pkgs.drawio
+    pkgs.figma-linux
     pkgs.qbittorrent
 
     (pkgs.writeShellScriptBin "powershell" ''
