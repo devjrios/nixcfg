@@ -16,6 +16,9 @@
   };
 
   networking.hostName = "nixos";
+  networking.extraHosts = ''
+    192.168.10.70 nepqas.medellin.gov.co
+  '';
   # networking.firewall.enable = false;
   networking.firewall = {
     allowedUDPPorts = [ 5353 ]; # For device discovery
