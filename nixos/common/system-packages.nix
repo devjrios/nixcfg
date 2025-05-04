@@ -61,7 +61,6 @@
     pkgs.htop
     pkgs.dos2unix
     pkgs.jq
-    pkgs.git
     pkgs.exiftool
     pkgs.jdupes
     pkgs.rsync
