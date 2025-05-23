@@ -6,6 +6,7 @@
   imports = [
     ./common
     ./hardware-configuration.nix
+    ./battery.nix
   ];
 
   users.users.jrios = {
