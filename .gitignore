@@ -1,3 +1,2 @@
-*.patch
 .envrc
 shell.nix
