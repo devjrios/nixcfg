@@ -14,6 +14,9 @@
     isNormalUser = true;
     description = "Juan Rios";
     extraGroups = ["networkmanager" "wheel" "wireshark"];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK0wYyniHUD5ulERQYCKg2a2D8hV8Bm2pRo3HCQJJedD jrios@ospinternational.com"
+    ];
   };
 
   networking.hostName = "nixos";

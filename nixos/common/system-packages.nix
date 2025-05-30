@@ -3,6 +3,18 @@
   lib,
   ...
 }: {
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+      PubkeyAuthentication = true;
+    };
+    # Specify allowed users
+    allowSFTP = false;
+  };
+
   environment.etc = {
     "firejail/qbittorrent.local".text = ''
       dbus-user filter
