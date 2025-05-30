@@ -43,6 +43,7 @@
   };
 
   environment.systemPackages = [
+    pkgs.qgis-ltr
     pkgs.google-chrome
     pkgs.brave
     pkgs.firefox-esr
