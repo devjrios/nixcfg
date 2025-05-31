@@ -2,7 +2,7 @@
   virtualisation.podman = {
     enable = true;
     networkSocket.openFirewall = true;
-    defaultNetwork.settings = {dns_enabled = true; default_rootless_network_cmd = "slirp4netns";};
+    defaultNetwork.settings = {dns_enabled = true;};
   };
 
   services.postgresql = {
