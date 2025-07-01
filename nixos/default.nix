@@ -25,9 +25,9 @@
   # '';
   # networking.firewall.enable = false;
   networking.firewall = {
-    allowedUDPPorts = [ 5353 ]; # For device discovery
+    allowedUDPPorts = [ 5353 1688 ]; # For device discovery
     allowedUDPPortRanges = [{ from = 32768; to = 61000; }]; # For Streaming
-    allowedTCPPorts = [ 8010 ];  # For gnomecast server
+    allowedTCPPorts = [ 8010 1688 ];  # For gnomecast server
   };
   networking.networkmanager = {
     enable = true;
