@@ -2,6 +2,7 @@
   boot.tmp.cleanOnBoot = true;
   # boot.kernelPackages = pkgs.linuxPackages_xanmod;
   boot.kernelPackages = pkgs.linuxPackages_6_6;
+  boot.supportedFilesystems = [ "ntfs" "exfat" ];
   boot.kernelPatches = [
     {
       name = "bore";
